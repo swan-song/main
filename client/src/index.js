@@ -5,6 +5,7 @@ import { createStore, applyMiddleware } from "redux";
 import { Provider } from "react-redux";
 import logger from "redux-logger";
 import rootReducer from "./reducers/rootReducer";
+import "bulma/css/bulma.min.css";
 
 const store = createStore(rootReducer, applyMiddleware(logger));
 
