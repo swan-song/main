@@ -1,15 +1,32 @@
-import { ADD_TO_CART, REMOVE_FROM_CART } from "../action-types/cart-types";
+import {
+  ADD_TO_CART,
+  REMOVE_FROM_CART,
+  ADD_HOUR,
+} from "../action-types/cart-types";
 
-export const addToCart = (dispatch, product) => {
+export const addToCart = (dispatch, car, cart) => {
+  if (cart.cars.includes(car)) {
+    addHour(dispatch, car);
+  } else {
+    dispatch({
+      type: ADD_TO_CART,
+      payload: car,
+    });
+  }
+};
+
+export const removeFromCart = (dispatch, car, cart) => {
   dispatch({
-    type: ADD_TO_CART,
-    payload: product,
+    type: REMOVE_FROM_CART,
+    payload: car,
   });
 };
 
-export const removeFromCart = (dispatch, product) => {
+export const addHour = (dispatch, car) => {
+  const newCar = car;
+  newCar.hours = car.hours + 1;
   dispatch({
-    type: REMOVE_FROM_CART,
-    payload: product,
+    type: ADD_HOUR,
+    payload: newCar,
   });
 };
