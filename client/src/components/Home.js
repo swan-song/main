@@ -4,7 +4,7 @@ import M4 from "../assets/bmw-m4.png";
 export default function Home() {
   return (
     <div>
-      <h1>Home Page</h1>
+      <h1>Home Pag</h1>
 
       <nav
         class="navbar has-shadow is-black"
