@@ -2,5 +2,4 @@
 #team members: Carlo, Frankie, Kendall, and Randy
 #e-commerce
 
-#Randy test
-#Randy test 2
+Adding to the Readme.
