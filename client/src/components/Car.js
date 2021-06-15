@@ -1,9 +1,9 @@
 import React from "react";
 
-export default function Navbar() {
+export default function Car() {
   return (
     <div>
-      <h1>Nav</h1>
+      <h1>Car</h1>
     </div>
   );
 }
