@@ -1,19 +1,35 @@
 import React from "react";
 import { Navbar as RBNavbar, Nav } from "react-bootstrap";
-import { BrowserRouter as Router, Link, Route, Switch } from "react-router-dom";
-import Home from "./Home";
-import Garage from "./Garage";
+import { Link } from "react-router-dom";
 
 export default function Navbar() {
   return (
     <div>
       <RBNavbar bg="light" expand="lg">
-        <RBNavbar.Brand href="#home">Branding</RBNavbar.Brand>
+        <Link to="/">
+          <RBNavbar.Brand href="/">Branding</RBNavbar.Brand>
+        </Link>
         <RBNavbar.Toggle aria-controls="basic-navbar-nav" />
         <RBNavbar.Collapse id="basic-navbar-nav">
           <Nav className="mr-auto">
-            <Nav.Link href="#home">Home</Nav.Link>
-            <Nav.Link href="#link">Garage</Nav.Link>
+            <Link to="/">
+              <Nav.Link href="/">Home</Nav.Link>
+            </Link>
+            <Link to="/garage">
+              <Nav.Link href="/garage">Garage</Nav.Link>
+            </Link>
+            <Link to="/account">
+              <Nav.Link href="/account">Account</Nav.Link>
+            </Link>
+            <Link to="/cart">
+              <Nav.Link href="/cart">Cart</Nav.Link>
+            </Link>
+            <Link to="/login">
+              <Nav.Link href="/login">Login</Nav.Link>
+            </Link>
+            <Link to="/signup">
+              <Nav.Link href="/signup">Signup</Nav.Link>
+            </Link>
           </Nav>
         </RBNavbar.Collapse>
       </RBNavbar>
