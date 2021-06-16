@@ -7,6 +7,7 @@ import Login from "./components/Login";
 import Garage from "./components/Garage";
 import Cart from "./components/Cart";
 import Footer from "./components/Footer";
+import Account from "./components/Account";
 import { toast } from "react-toastify";
 
 toast.configure();
@@ -28,6 +29,9 @@ function App() {
           </Route>
           <Route path="/garage">
             <Garage />
+          </Route>
+          <Route path="/account">
+            <Account />
           </Route>
           <Route path="/cart">
             <Cart />
