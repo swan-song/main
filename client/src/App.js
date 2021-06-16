@@ -1,11 +1,12 @@
 import "./App.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import SignUpForm from "./components/SignUpForm";
-import Home from "./components/Home";
 import Navbar from "./components/Navbar";
+import Home from "./components/Home";
 import Login from "./components/Login";
 import Garage from "./components/Garage";
 import Cart from "./components/Cart";
+import Footer from "./components/Footer";
 import Account from "./components/Account";
 import { toast } from "react-toastify";
 
@@ -37,6 +38,7 @@ function App() {
           </Route>
         </Switch>
       </Router>
+      <Footer />
     </div>
   );
 }
