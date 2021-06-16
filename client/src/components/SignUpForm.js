@@ -15,28 +15,19 @@ export default function SignUpForm() {
   };
   return (
     <div>
+      <h1>Register Here!</h1>
       <Container fluid>
         <div className="signUpContainer">
           <Form noValidate validated={validated} onSubmit={handleSubmit}>
             <Row className="mb-3">
               <Form.Group md="3" controlId="validationCustom01">
                 <Form.Label>First name</Form.Label>
-                <Form.Control
-                  required
-                  type="text"
-                  placeholder="First name"
-                  defaultValue=""
-                />
+                <Form.Control required type="text" placeholder="First name" />
                 <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
               </Form.Group>
               <Form.Group md="3" controlId="validationCustom02">
                 <Form.Label>Last name</Form.Label>
-                <Form.Control
-                  required
-                  type="text"
-                  placeholder="Last name"
-                  defaultValue=""
-                />
+                <Form.Control required type="text" placeholder="Last name" />
                 <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
               </Form.Group>
               <Form.Group md="3" controlId="validationCustomUsername">
