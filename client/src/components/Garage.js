@@ -1,18 +1,21 @@
-import React from "react";
+import React, { useEffect } from "react";
 import CarCard from "./CarCard";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { Container } from "../components/styled-components/styled-components";
+import { getCars } from "../actions/car-actions";
 
 export default function Garage() {
-  const cars = useSelector((state) => state.Cars);
+  const dispatch = useDispatch();
+  const cars = useSelector((state) => state.Cars.rows);
+
+  useEffect(() => {
+    getCars(dispatch);
+  }, []);
+
   return (
     <div>
       <h1>Garage</h1>
-      <Container>
-        {cars.cars.map((car) => (
-          <CarCard car={car} key={car.id} />
-        ))}
-      </Container>
+      {cars ? cars.map((car) => <CarCard car={car} key={car.id} />) : "loading"}
     </div>
   );
 }
