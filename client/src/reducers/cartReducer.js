@@ -4,7 +4,7 @@ import {
   ADD_HOUR,
 } from "../action-types/cart-types";
 
-const initialState = { cars: [], total: 0, hours: 0 };
+const initialState = { cars: [], total: 0, hours: [] };
 
 const Cart = (state = initialState, action) => {
   let newState = state;
@@ -23,15 +23,22 @@ const Cart = (state = initialState, action) => {
       };
       break;
     case ADD_HOUR:
-      break;
+      newState = {
+        ...state,
+        hours: [...state.hours, action.payload],
+      };
     default:
       break;
   }
 
-  const singleCarTotals = newState.cars.map((car) => car.hours * car.price);
-  const updatedTotal = singleCarTotals.reduce((sum, car) => sum + car, 0);
+  // const singleCarTotals = newState.cars.map((car) => car.hours * car.price);
+  // const updatedTotal = singleCarTotals.reduce((sum, car) => sum + car, 0);
 
-  newState.total = updatedTotal;
+  // newState.total = updatedTotal;
+
+  // const cartHours = newState.cars.map((car) => car.hours);
+  // const updatedCartHours = cartHours.reduce((sum, product) => sum + product, 0);
+  // newState.cars = updatedCartHours;
 
   return newState;
 };

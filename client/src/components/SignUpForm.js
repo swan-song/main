@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Form, Row, InputGroup, Button, Col, Container } from "react-bootstrap";
+import { Form, Row, InputGroup, Button, Container } from "react-bootstrap";
 
 export default function SignUpForm() {
   const [validated, setValidated] = useState(false);
@@ -15,7 +15,7 @@ export default function SignUpForm() {
   };
   return (
     <div>
-      <h1>Register Here!</h1>
+      <h1>Register</h1>
       <Container fluid>
         <div className="signUpContainer">
           <Form noValidate validated={validated} onSubmit={handleSubmit}>
@@ -31,16 +31,16 @@ export default function SignUpForm() {
                 <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
               </Form.Group>
               <Form.Group md="3" controlId="validationCustomUsername">
-                <Form.Label>Username</Form.Label>
+                <Form.Label>Email</Form.Label>
                 <InputGroup hasValidation>
                   <Form.Control
                     type="text"
-                    placeholder="Username"
+                    placeholder="Email"
                     aria-describedby="inputGroupPrepend"
                     required
                   />
                   <Form.Control.Feedback type="invalid">
-                    Please choose a username.
+                    Please enter a valid email.
                   </Form.Control.Feedback>
                 </InputGroup>
               </Form.Group>
@@ -67,7 +67,7 @@ export default function SignUpForm() {
               </Form.Group>
             </Row>
 
-            <Button type="submit">Submit form</Button>
+            <Button type="submit">Register</Button>
           </Form>
         </div>
       </Container>
