@@ -4,7 +4,6 @@ import {
   Header,
   Info,
   Button,
-  Container,
 } from "./styled-components/styled-components";
 import M4 from "../assets/bmw-m4.png";
 import { Link } from "react-router-dom";

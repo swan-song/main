@@ -1,11 +1,21 @@
 import React from "react";
-import { Image, Header, Info } from "./styled-components/styled-components";
+import {
+  Image,
+  Header,
+  Button,
+  Container,
+} from "./styled-components/styled-components";
 
 export default function CarCard(props) {
   return (
     <div>
-      {/* <Image src={props.car.image} />
-      <Header>{props.car.title}</Header> */}
+      <Container car>
+        <Container image>
+          <Image src={props.car.image} />
+        </Container>
+        <Header>{props.car.title}</Header>
+        <Button details>Details</Button>
+      </Container>
     </div>
   );
 }

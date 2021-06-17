@@ -24,12 +24,6 @@ export default function Navbar() {
             <Link to="/cart">
               <Nav.Link href="/cart">Cart</Nav.Link>
             </Link>
-            <Link to="/login">
-              <Nav.Link href="/login">Login</Nav.Link>
-            </Link>
-            <Link to="/signup">
-              <Nav.Link href="/signup">Signup</Nav.Link>
-            </Link>
           </Nav>
         </RBNavbar.Collapse>
       </RBNavbar>

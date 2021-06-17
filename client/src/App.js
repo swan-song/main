@@ -8,6 +8,7 @@ import Garage from "./components/Garage";
 import Cart from "./components/Cart";
 import Footer from "./components/Footer";
 import Account from "./components/Account";
+import SingleCarPage from "./components/SingleCarPage";
 import { toast } from "react-toastify";
 
 toast.configure();
@@ -35,6 +36,9 @@ function App() {
           </Route>
           <Route path="/cart">
             <Cart />
+          </Route>
+          <Route path="/car/:id">
+            <SingleCarPage />
           </Route>
         </Switch>
       </Router>
