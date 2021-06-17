@@ -2,14 +2,14 @@ import React, { useEffect } from "react";
 import CarCard from "./CarCard";
 import { useSelector, useDispatch } from "react-redux";
 import { Container } from "../components/styled-components/styled-components";
-import { addCars } from "../actions/car-actions";
+import { getCars } from "../actions/car-actions";
 
 export default function Garage() {
   const dispatch = useDispatch();
   const cars = useSelector((state) => state.Cars.rows);
-  // console.log(cars);
+
   useEffect(() => {
-    addCars(dispatch);
+    getCars(dispatch);
   }, []);
 
   return (
