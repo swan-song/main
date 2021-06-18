@@ -112,7 +112,7 @@ export default function Footer() {
         <div class="bg-light py-4">
           <div class="container text-center">
             <p class="text-muted mb-0 py-2">
-              © 2019 Bootstrapious All rights reserved.
+              © 2021 Branding. All rights reserved.
             </p>
           </div>
         </div>

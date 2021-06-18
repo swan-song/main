@@ -26,14 +26,16 @@ export default function SingleCarPage() {
       <Container image>
         <Image src={selectedCar.image} />
       </Container>
-      <Header>{selectedCar.title}</Header>
-      <Info>{selectedCar.description}</Info>
-      <Info>{selectedCar.transmission}</Info>
-      <Info>Top Speed: {selectedCar.top_speed}</Info>
-      <Info>Rate: ${selectedCar.rate}/hr</Info>
-      <Button variant="primary" onClick={handleShow}>
-        Reserve
-      </Button>
+      <Container info>
+        <Header>{selectedCar.title}</Header>
+        <Info>{selectedCar.description}</Info>
+        <Info>{selectedCar.transmission}</Info>
+        <Info>Top Speed: {selectedCar.top_speed}</Info>
+        <Info>Rate: ${selectedCar.rate}/hr</Info>
+        <Button variant="primary" onClick={handleShow}>
+          Reserve
+        </Button>
+      </Container>
 
       <Modal show={show} onHide={handleClose} centered>
         <Modal.Header closeButton>

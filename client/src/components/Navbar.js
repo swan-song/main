@@ -22,7 +22,7 @@ export default function Navbar() {
               <Nav.Link href="/account">Account</Nav.Link>
             </Link>
             <Link to="/cart">
-              <Nav.Link href="/cart">Reservations</Nav.Link>
+              <Nav.Link href="/cart">Cart</Nav.Link>
             </Link>
           </Nav>
         </RBNavbar.Collapse>
