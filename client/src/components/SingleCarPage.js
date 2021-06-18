@@ -29,8 +29,8 @@ export default function SingleCarPage() {
       <Header>{selectedCar.title}</Header>
       <Info>{selectedCar.description}</Info>
       <Info>{selectedCar.transmission}</Info>
-      <Info>{selectedCar.top_speed}</Info>
-      <Info>${selectedCar.rate}/hr</Info>
+      <Info>Top Speed: {selectedCar.top_speed}</Info>
+      <Info>Rate: ${selectedCar.rate}/hr</Info>
       <Button variant="primary" onClick={handleShow}>
         Reserve
       </Button>
