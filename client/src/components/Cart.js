@@ -7,7 +7,7 @@ export default function Cart() {
 
   return (
     <div>
-      <h1>Cart</h1>
+      <h1>Reservations</h1>
       {cart.cars.map((car) => (
         <CartItem car={car} key={car.id} />
       ))}
