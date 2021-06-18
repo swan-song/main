@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Button = styled.button`
-  width: ${(props) => (props.details ? "80%" : "")};
+  width: ${(props) => (props.details ? "60%" : "")};
   margin-left: auto;
   margin-right: auto;
 `;
@@ -20,6 +20,7 @@ export const Input = styled.input``;
 export const Container = styled.div`
   height: ${(props) => (props.image ? "20rem" : "")};
   width: ${(props) => (props.image ? "100vw" : "")};
+  width: ${(props) => (props.info ? "80vw" : "")};
   margin-left: auto;
   margin-right: auto;
   margin-bottom: ${(props) => (props.car ? "2rem" : "")};
