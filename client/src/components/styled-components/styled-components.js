@@ -15,6 +15,8 @@ export const Header = styled.h1``;
 
 export const Info = styled.p``;
 
+export const Input = styled.input``;
+
 export const Container = styled.div`
   height: ${(props) => (props.image ? "20rem" : "")};
   width: ${(props) => (props.image ? "100vw" : "")};
