@@ -24,9 +24,10 @@ export default function CartItem(props) {
         <Header>{props.car.title}</Header>
         <Info>Rental Date: {date}</Info>
         <Info>Rental Duration: {hours} hours</Info>
+        <Info>Total: ${props.car.rate * hours}</Info>
         <Link to="/garage">
           <Button onClick={() => removeFromCart(dispatch, props.car.id)}>
-            Change Car
+            Change Reservation
           </Button>
         </Link>
       </Container>

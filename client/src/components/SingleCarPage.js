@@ -61,7 +61,7 @@ export default function SingleCarPage() {
                 setDateTime(dispatch, hours, date);
               }}
             >
-              Confirm Reservation
+              Proceed to Checkout
             </Button>
           </Link>
         </Modal.Footer>
