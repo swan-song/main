@@ -1,5 +1,5 @@
 import React from "react";
-import { Form, Button, Row } from "react-bootstrap";
+import { Form, Button } from "react-bootstrap";
 
 export default function Login() {
   return (
@@ -8,14 +8,14 @@ export default function Login() {
       <div className="loginContainer">
         <Form>
           <Form.Group>
-            <Form.Label>Username:</Form.Label>
+            <Form.Label>Email</Form.Label>
             <Form.Control
               required
               type="text"
-              placeholder="Username"
+              placeholder="Email"
               defaultValue=""
             />
-            <Form.Label>Password:</Form.Label>
+            <Form.Label>Password</Form.Label>
             <Form.Control
               required
               type="password"

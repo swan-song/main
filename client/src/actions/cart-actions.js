@@ -5,14 +5,10 @@ import {
 } from "../action-types/cart-types";
 
 export const addToCart = (dispatch, car, cart) => {
-  if (cart.cars.includes(car)) {
-    addHour(dispatch, car);
-  } else {
-    dispatch({
-      type: ADD_TO_CART,
-      payload: car,
-    });
-  }
+  dispatch({
+    type: ADD_TO_CART,
+    payload: car,
+  });
 };
 
 export const removeFromCart = (dispatch, car, cart) => {
@@ -22,11 +18,10 @@ export const removeFromCart = (dispatch, car, cart) => {
   });
 };
 
-export const addHour = (dispatch, car) => {
-  const newCar = car;
-  newCar.hours = car.hours + 1;
+export const addHour = (dispatch, hours) => {
+  const updatedHours = hours;
   dispatch({
     type: ADD_HOUR,
-    payload: newCar,
+    payload: updatedHours,
   });
 };
