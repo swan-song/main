@@ -6,9 +6,10 @@ import {
   Header,
   Info,
   Button,
+  Input,
 } from "./styled-components/styled-components";
 import { Link } from "react-router-dom";
-import { addToCart, addHour } from "../actions/cart-actions";
+import { addToCart, setDateTime } from "../actions/cart-actions";
 import { Modal } from "react-bootstrap";
 
 export default function SingleCarPage() {
@@ -18,6 +19,7 @@ export default function SingleCarPage() {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const [hours, setHours] = useState(0);
+  const [date, setDate] = useState("");
 
   return (
     <div>
@@ -35,14 +37,17 @@ export default function SingleCarPage() {
 
       <Modal show={show} onHide={handleClose} centered>
         <Modal.Header closeButton>
-          <Modal.Title>Rental Duration</Modal.Title>
+          <Modal.Title>Reservation Details</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <input
-            type="number"
-            onChange={(e) => setHours(e.target.valueAsNumber)}
-            placeholder="hours"
-          ></input>
+          <Container>
+            <Input type="date" onChange={(e) => setDate(e.target.value)} />
+            <Input
+              type="number"
+              onChange={(e) => setHours(e.target.valueAsNumber)}
+              placeholder="hours"
+            />
+          </Container>
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
@@ -50,9 +55,10 @@ export default function SingleCarPage() {
           </Button>
           <Link to="/cart">
             <Button
+              variant="primary"
               onClick={() => {
                 addToCart(dispatch, selectedCar);
-                addHour(dispatch, hours);
+                setDateTime(dispatch, hours, date);
               }}
             >
               Confirm Reservation

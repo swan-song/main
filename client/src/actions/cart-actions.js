@@ -1,27 +1,26 @@
 import {
   ADD_TO_CART,
   REMOVE_FROM_CART,
-  ADD_HOUR,
+  SET_DATE_TIME,
 } from "../action-types/cart-types";
 
-export const addToCart = (dispatch, car, cart) => {
+export const addToCart = (dispatch, car) => {
   dispatch({
     type: ADD_TO_CART,
     payload: car,
   });
 };
 
-export const removeFromCart = (dispatch, car, cart) => {
+export const removeFromCart = (dispatch, car) => {
   dispatch({
     type: REMOVE_FROM_CART,
     payload: car,
   });
 };
 
-export const addHour = (dispatch, hours) => {
-  const updatedHours = hours;
+export const setDateTime = (dispatch, hours, date) => {
   dispatch({
-    type: ADD_HOUR,
-    payload: updatedHours,
+    type: SET_DATE_TIME,
+    payload: [hours, date],
   });
 };

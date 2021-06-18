@@ -8,10 +8,13 @@ import {
   Info,
 } from "./styled-components/styled-components";
 import { removeFromCart } from "../actions/cart-actions";
+import { Link } from "react-router-dom";
 
 export default function CartItem(props) {
   const dispatch = useDispatch();
   const hours = useSelector((state) => state.Cart.hours);
+  const date = useSelector((state) => state.Cart.date);
+
   return (
     <div>
       <Container car>
@@ -19,12 +22,13 @@ export default function CartItem(props) {
           <Image src={props.car.image} />
         </Container>
         <Header>{props.car.title}</Header>
-        {hours.map((hour) => (
-          <Info>Rental Duration: {hour} hours</Info>
-        ))}
-        <Button onClick={() => removeFromCart(dispatch, props.car.id)}>
-          Remove Car
-        </Button>
+        <Info>Rental Date: {date}</Info>
+        <Info>Rental Duration: {hours} hours</Info>
+        <Link to="/garage">
+          <Button onClick={() => removeFromCart(dispatch, props.car.id)}>
+            Change Car
+          </Button>
+        </Link>
       </Container>
     </div>
   );

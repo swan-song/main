@@ -1,10 +1,10 @@
 import {
   ADD_TO_CART,
   REMOVE_FROM_CART,
-  ADD_HOUR,
+  SET_DATE_TIME,
 } from "../action-types/cart-types";
 
-const initialState = { cars: [], total: 0, hours: [] };
+const initialState = { cars: [], total: 0, hours: 0, date: "" };
 
 const Cart = (state = initialState, action) => {
   let newState = state;
@@ -13,7 +13,7 @@ const Cart = (state = initialState, action) => {
     case ADD_TO_CART:
       newState = {
         ...state,
-        cars: [...state.cars, action.payload],
+        cars: [(state.cars = action.payload)],
       };
       break;
     case REMOVE_FROM_CART:
@@ -22,11 +22,13 @@ const Cart = (state = initialState, action) => {
         cars: state.cars.filter((car) => car.id !== action.payload),
       };
       break;
-    case ADD_HOUR:
+    case SET_DATE_TIME:
       newState = {
         ...state,
-        hours: [...state.hours, action.payload],
+        hours: (state.hours = action.payload[0]),
+        date: (state.date = action.payload[1]),
       };
+      break;
     default:
       break;
   }
