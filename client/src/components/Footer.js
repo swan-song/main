@@ -9,109 +9,94 @@ export default function Footer() {
             <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
               <img src="img/logo.png" alt="" width="180" class="mb-3" />
               <p class="font-italic text-muted">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-                eiusmod tempor incididunt.
+                This website was put together by Randy Chong, Frankie Ferbrache,
+                Kendall Burdette, and Carlo Carbonell.
               </p>
-              <ul class="list-inline mt-4">
-                <li class="list-inline-item">
+              <ul className="list-inline mt-4">
+                <li className="list-inline-item">
                   <a href="#" target="_blank" title="twitter">
-                    <i class="fa fa-twitter"></i>
+                    <i className="fa fa-twitter"></i>
                   </a>
                 </li>
-                <li class="list-inline-item">
+                <li className="list-inline-item">
                   <a href="#" target="_blank" title="facebook">
-                    <i class="fa fa-facebook"></i>
+                    <i className="fa fa-facebook"></i>
                   </a>
                 </li>
-                <li class="list-inline-item">
+                <li className="list-inline-item">
                   <a href="#" target="_blank" title="instagram">
-                    <i class="fa fa-instagram"></i>
+                    <i className="fa fa-instagram"></i>
                   </a>
                 </li>
-                <li class="list-inline-item">
+                <li className="list-inline-item">
                   <a href="#" target="_blank" title="pinterest">
-                    <i class="fa fa-pinterest"></i>
+                    <i className="fa fa-pinterest"></i>
                   </a>
                 </li>
-                <li class="list-inline-item">
+                <li className="list-inline-item">
                   <a href="#" target="_blank" title="vimeo">
-                    <i class="fa fa-vimeo"></i>
+                    <i className="fa fa-vimeo"></i>
                   </a>
                 </li>
               </ul>
             </div>
-            <div class="col-lg-2 col-md-6 mb-4 mb-lg-0">
-              <h6 class="text-uppercase font-weight-bold mb-4">Reservations</h6>
-              <ul class="list-unstyled mb-0">
-                <li class="mb-2">
-                  <a href="#" class="text-muted">
+            <div className="col-lg-2 col-md-6 mb-4 mb-lg-0">
+              <h6 className="text-uppercase font-weight-bold mb-4">
+                Reservations
+              </h6>
+              <ul className="list-unstyled mb-0">
+                <li className="mb-2">
+                  <a href="#" className="text-muted">
                     FAQ
                   </a>
                 </li>
-                <li class="mb-2">
-                  <a href="#" class="text-muted">
+                <li className="mb-2">
+                  <a href="/garage" className="text-muted">
                     Cars for Rent
                   </a>
                 </li>
               </ul>
             </div>
-            <div class="col-lg-2 col-md-6 mb-4 mb-lg-0">
-              <h6 class="text-uppercase font-weight-bold mb-4">Company</h6>
-              <ul class="list-unstyled mb-0">
-                <li class="mb-2">
-                  <a href="/login" class="text-muted">
+            <div className="col-lg-2 col-md-6 mb-4 mb-lg-0">
+              <h6 className="text-uppercase font-weight-bold mb-4">Company</h6>
+              <ul className="list-unstyled mb-0">
+                <li className="mb-2">
+                  <a href="/login" className="text-muted">
                     Login
                   </a>
                 </li>
-                <li class="mb-2">
-                  <a href="/signup" class="text-muted">
+                <li className="mb-2">
+                  <a href="/signup" className="text-muted">
                     Register
                   </a>
                 </li>
-                <li class="mb-2">
-                  <a href="#" class="text-muted">
+                <li className="mb-2">
+                  <a href="#" className="text-muted">
                     About Us
                   </a>
                 </li>
-                <li class="mb-2">
-                  <a href="https://github.com/swan-song" class="text-muted">
+                <li className="mb-2">
+                  <a href="https://github.com/swan-song" className="text-muted">
                     Contributors
                   </a>
                 </li>
               </ul>
             </div>
-            <div class="col-lg-4 col-md-6 mb-lg-0">
-              <h6 class="text-uppercase font-weight-bold mb-4">Newsletter</h6>
-              <p class="text-muted mb-4">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. At
-                itaque temporibus.
+            <div className="col-lg-4 col-md-6 mb-lg-0">
+              <h6 className="text-uppercase font-weight-bold mb-4">
+                Medium Article
+              </h6>
+              <p className="text-muted mb-4">
+                Follow this link to check out the Medium article that we all
+                collectively contributed to!
               </p>
-              <div class="p-1 rounded border">
-                <div class="input-group">
-                  <input
-                    type="email"
-                    placeholder="Enter your email address"
-                    aria-describedby="button-addon1"
-                    class="form-control border-0 shadow-0"
-                  />
-                  <div class="input-group-append">
-                    <button
-                      id="button-addon1"
-                      type="submit"
-                      class="btn btn-link"
-                    >
-                      <i class="fa fa-paper-plane"></i>
-                    </button>
-                  </div>
-                </div>
-              </div>
             </div>
           </div>
         </div>
 
-        <div class="bg-light py-4">
-          <div class="container text-center">
-            <p class="text-muted mb-0 py-2">
+        <div className="bg-light py-4">
+          <div className="container text-center">
+            <p className="text-muted mb-0 py-2">
               © 2021 Branding. All rights reserved.
             </p>
           </div>
