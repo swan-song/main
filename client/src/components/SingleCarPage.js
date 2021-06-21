@@ -91,7 +91,7 @@ export default function SingleCarPage() {
       <Container image>
         <Image src={selectedCar.image} />
       </Container>
-      <Container info>
+      <Container info single>
         <Header>{selectedCar.title}</Header>
         <Info>{selectedCar.description}</Info>
         <Info>{selectedCar.transmission}</Info>

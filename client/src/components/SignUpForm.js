@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { Link, Redirect, useHistory } from "react-router-dom";
 import { Form, Row, InputGroup, Container } from "react-bootstrap";
 import { Button } from "../components/styled-components/styled-components";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function SignUpForm() {
   const [validated, setValidated] = useState(false);
@@ -9,19 +11,18 @@ export default function SignUpForm() {
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [passwordTwo, setPasswordTwo] = useState("");
   let history = useHistory();
-  // const handleSubmit = (event) => {
-  //   const form = event.currentTarget;
-  //   if (form.checkValidity() === false) {
-  //     event.preventDefault();
-  //     event.stopPropagation();
-  //   }
-
-  //   setValidated(true);
-  // };
   
   const handleSubmitData = async (event) => {
     console.log("fired")
+    const form = event.currentTarget;
+    if (form.checkValidity() === false) {
+      event.preventDefault();
+      event.stopPropagation();
+    }
+    setValidated(true);
+
     event.preventDefault();
     console.log("after event")
     const first_name = firstName;
@@ -62,13 +63,17 @@ export default function SignUpForm() {
       <h1>Register</h1>
       <Container fluid>
         <div className="signUpContainer">
-          <Form onSubmit={(e) =>handleSubmitData(e)}>
+          <Form
+            noValidate
+            required
+            validated={validated}
+            onSubmit={handleSubmitData}
+          >
             <Row className="mb-3">
               <Form.Group md="3" controlId="validationCustom01">
                 <Form.Label>First name</Form.Label>
                 <Form.Control
                   name="first_name"
-                  required
                   type="text"
                   onChange={(e) => setFirstName(e.target.value)}
                   placeholder="First name"
@@ -130,10 +135,7 @@ export default function SignUpForm() {
                 </Form.Control.Feedback>
               </Form.Group>
             </Row>
-
-            <Button type="submit">
-              Register
-            </Button>
+            <Button type="submit">Register</Button>
           </Form>
         </div>
       </Container>
