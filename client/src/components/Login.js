@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import { Form, Button } from "react-bootstrap";
+import { Form } from "react-bootstrap";
 import { useDispatch } from "react-redux";
+import { Button } from "../components/styled-components/styled-components";
 
 export default function Login() {
   const [email, setemail] = useState({});
