@@ -13,15 +13,18 @@ export default function SignUpForm() {
   const [password, setPassword] = useState("");
   const [passwordTwo, setPasswordTwo] = useState("");
   let history = useHistory();
-
+  
   const handleSubmitData = async (event) => {
+    console.log("fired")
     const form = event.currentTarget;
     if (form.checkValidity() === false) {
       event.preventDefault();
       event.stopPropagation();
     }
     setValidated(true);
+
     event.preventDefault();
+    console.log("after event")
     const first_name = firstName;
     const last_name = lastName;
     const body = {
@@ -32,13 +35,29 @@ export default function SignUpForm() {
     };
 
     const dataURL = "http://localhost:3001/users/create_user";
+    console.log(dataURL)
     const response = await fetch(dataURL, {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      headers: { "Content-Type": "application/json", "Access-Control-Allow-Origin": "*" },
       body: JSON.stringify(body),
     });
     console.log(response);
-  };
+    if (response.status === 200){
+
+      history.push("/login");
+    } else {
+      console.log("Error in signing you up", {response})
+       history.push("/signup");
+    }
+    // const dataResponse = await response.json();
+    // console.log(dataResponse);
+    // if (dataResponse.rowCount !== 0) {
+      // <Redirect to="/login" />;
+    // } else {
+    //   // <Redirect to="/register" />;
+      
+    // };
+  }
   return (
     <div>
       <h1>Register</h1>
@@ -58,7 +77,7 @@ export default function SignUpForm() {
                   type="text"
                   onChange={(e) => setFirstName(e.target.value)}
                   placeholder="First name"
-                />
+                  />
                 <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
               </Form.Group>
               <Form.Group md="3" controlId="validationCustom02">
@@ -116,7 +135,6 @@ export default function SignUpForm() {
                 </Form.Control.Feedback>
               </Form.Group>
             </Row>
-
             <Button type="submit">Register</Button>
           </Form>
         </div>
