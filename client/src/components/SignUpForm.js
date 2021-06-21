@@ -19,9 +19,11 @@ export default function SignUpForm() {
 
   //   setValidated(true);
   // };
-
+  
   const handleSubmitData = async (event) => {
+    console.log("fired")
     event.preventDefault();
+    console.log("after event")
     const first_name = firstName;
     const last_name = lastName;
     const body = {
@@ -30,26 +32,37 @@ export default function SignUpForm() {
       email,
       password,
     };
+
     const dataURL = "http://localhost:3001/users/create_user";
+    console.log(dataURL)
     const response = await fetch(dataURL, {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      headers: { "Content-Type": "application/json", "Access-Control-Allow-Origin": "*" },
       body: JSON.stringify(body),
     });
-    const dataResponse = await response.json();
-    // if (response === 200) {
-    history.push("/login");
-    // } else {
-    // <Redirect to="/register" />;
-
     console.log(response);
-  };
+    if (response.status === 200){
+
+      history.push("/login");
+    } else {
+      console.log("Error in signing you up", {response})
+       history.push("/signup");
+    }
+    // const dataResponse = await response.json();
+    // console.log(dataResponse);
+    // if (dataResponse.rowCount !== 0) {
+      // <Redirect to="/login" />;
+    // } else {
+    //   // <Redirect to="/register" />;
+      
+    // };
+  }
   return (
     <div>
       <h1>Register</h1>
       <Container fluid>
         <div className="signUpContainer">
-          <Form type="submit" onSubmit={handleSubmitData}>
+          <Form onSubmit={(e) =>handleSubmitData(e)}>
             <Row className="mb-3">
               <Form.Group md="3" controlId="validationCustom01">
                 <Form.Label>First name</Form.Label>
@@ -59,7 +72,7 @@ export default function SignUpForm() {
                   type="text"
                   onChange={(e) => setFirstName(e.target.value)}
                   placeholder="First name"
-                />
+                  />
                 <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
               </Form.Group>
               <Form.Group md="3" controlId="validationCustom02">
@@ -118,7 +131,7 @@ export default function SignUpForm() {
               </Form.Group>
             </Row>
 
-            <Button type="submit" onSubmit={Location.reload}>
+            <Button type="submit">
               Register
             </Button>
           </Form>
