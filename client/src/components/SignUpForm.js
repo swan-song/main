@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link, Redirect, useHistory } from "react-router-dom";
-import { Form, Row, InputGroup, Button, Container } from "react-bootstrap";
+import { Form, Row, InputGroup, Container } from "react-bootstrap";
+import { Button } from "../components/styled-components/styled-components";
 
 export default function SignUpForm() {
   const [validated, setValidated] = useState(false);
