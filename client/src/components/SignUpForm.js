@@ -13,18 +13,18 @@ export default function SignUpForm() {
   const [password, setPassword] = useState("");
   const [passwordTwo, setPasswordTwo] = useState("");
   let history = useHistory();
-  
+
   const handleSubmitData = async (event) => {
-    console.log("fired")
-    const form = event.currentTarget;
-    if (form.checkValidity() === false) {
-      event.preventDefault();
-      event.stopPropagation();
-    }
-    setValidated(true);
+    // console.log("fired");
+    // const form = event.currentTarget;
+    // if (form.checkValidity() === false) {
+    //   event.preventDefault();
+    //   event.stopPropagation();
+    // }
+    // setValidated(true);
 
     event.preventDefault();
-    console.log("after event")
+    console.log("after event");
     const first_name = firstName;
     const last_name = lastName;
     const body = {
@@ -35,49 +35,43 @@ export default function SignUpForm() {
     };
 
     const dataURL = "http://localhost:3001/users/create_user";
-    console.log(dataURL)
     const response = await fetch(dataURL, {
       method: "POST",
-      headers: { "Content-Type": "application/json", "Access-Control-Allow-Origin": "*" },
+      headers: {
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
+      },
       body: JSON.stringify(body),
     });
     console.log(response);
-    if (response.status === 200){
-
+    if (response.status === 200) {
       history.push("/login");
     } else {
-      console.log("Error in signing you up", {response})
-       history.push("/signup");
+      console.log("Error in signing you up", { response });
+      history.push("/signup");
     }
-    // const dataResponse = await response.json();
-    // console.log(dataResponse);
-    // if (dataResponse.rowCount !== 0) {
-      // <Redirect to="/login" />;
-    // } else {
-    //   // <Redirect to="/register" />;
-      
-    // };
-  }
+  };
   return (
     <div>
       <h1>Register</h1>
       <Container fluid>
         <div className="signUpContainer">
           <Form
-            noValidate
-            required
-            validated={validated}
+            // noValidate
+            // required
+            // validated={validated}
             onSubmit={handleSubmitData}
           >
             <Row className="mb-3">
               <Form.Group md="3" controlId="validationCustom01">
                 <Form.Label>First name</Form.Label>
                 <Form.Control
+                  required
                   name="first_name"
                   type="text"
                   onChange={(e) => setFirstName(e.target.value)}
                   placeholder="First name"
-                  />
+                />
                 <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
               </Form.Group>
               <Form.Group md="3" controlId="validationCustom02">
@@ -96,7 +90,7 @@ export default function SignUpForm() {
                 <InputGroup hasValidation>
                   <Form.Control
                     name="email"
-                    type="text"
+                    type="email"
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="Email"
                     aria-describedby="inputGroupPrepend"
