@@ -4,6 +4,27 @@ export const Button = styled.button`
   width: ${(props) => (props.details ? "60%" : "")};
   margin-left: auto;
   margin-right: auto;
+  box-shadow: inset 0px 1px 3px 0px #91b8b3;
+  background-color: black;
+  border-radius: 5px;
+  border: 1px solid #566963;
+  display: inline-block;
+  cursor: pointer;
+  color: #ffffff;
+  font-family: Arial;
+  font-size: 15px;
+  font-weight: bold;
+  padding: 11px 23px;
+  text-decoration: none;
+  text-shadow: 0px -1px 0px #2b665e;
+  &:hover {
+    background: linear-gradient(to bottom, #6c7c7c 5%, #768d87 100%);
+    background-color: #6c7c7c;
+  }
+  :active {
+    position: relative;
+    top: 1px;
+  }
 `;
 
 export const Image = styled.img`
@@ -12,11 +33,14 @@ export const Image = styled.img`
 `;
 
 export const Header = styled.h1`
-  ${(props) => (props.home ? "color: white" : "")}
+  ${(props) => (props.home ? "color: white" : "")};
+  ${(props) => (props.home ? "background: rgba(0,0,0,0.5)" : "")}
 `;
 
 export const Info = styled.p`
-  ${(props) => (props.home ? "color: white" : "")}
+  ${(props) => (props.home ? "color: white" : "")};
+  ${(props) => (props.home ? "font-weight: bold" : "")};
+  ${(props) => (props.home ? "background: rgba(0,0,0,0.5)" : "")}
 `;
 
 export const Input = styled.input``;
