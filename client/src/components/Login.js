@@ -24,7 +24,7 @@ export default function Login() {
     <div>
       <h1>Login</h1>
       <div className="loginContainer">
-        <Form>
+        <Form action="/login" method="post">
           <Form.Group>
             <Form.Label>Email</Form.Label>
             <Form.Control

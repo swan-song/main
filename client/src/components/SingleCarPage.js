@@ -10,6 +10,7 @@ import {
 import { addToCart, setDateTime } from "../actions/cart-actions";
 import { Modal, Form, Col } from "react-bootstrap";
 import { useHistory } from "react-router-dom";
+import { toast } from "react-toastify";
 
 export default function SingleCarPage() {
   const selectedCar = useSelector((state) => state.SingleCar);
@@ -48,7 +49,7 @@ export default function SingleCarPage() {
 
       setFormError(
         "duration",
-        isValidDuration ? null : "Please enter in hours"
+        isValidDuration ? null : "Please enter in hours (1hr minimum)"
       );
     }
 
@@ -145,17 +146,22 @@ export default function SingleCarPage() {
               </Form.Row>
 
               <Button
-                variant="primary"
                 type="submit"
                 onClick={() => {
                   if (
-                    (formValues.date.length === 10, formValues.duration > 0)
+                    formValues.date.length === 10 &&
+                    formValues.duration >= 1
                   ) {
                     addToCart(dispatch, selectedCar);
                     setDateTime(dispatch, formValues.duration, formValues.date);
                     history.push("/cart");
+                    toast.success("Car successfully added", {
+                      toastId: 1,
+                    });
                   } else {
-                    alert("Please fill out form");
+                    toast.error("Please complete form", {
+                      toastId: 2,
+                    });
                   }
                 }}
               >

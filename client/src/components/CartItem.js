@@ -11,6 +11,7 @@ import { removeFromCart } from "../actions/cart-actions";
 import { Link } from "react-router-dom";
 import { Form, Col } from "react-bootstrap";
 import stateCodes from "../constants/stateCodes";
+import { toast } from "react-toastify";
 
 export default function CartItem(props) {
   const dispatch = useDispatch();
@@ -45,12 +46,25 @@ export default function CartItem(props) {
   }, []);
 
   const setFormValue = useCallback((key, value) => {
-    if (key === "phone") {
+    if (key === "address1") {
+      const isValidAddress1 = value.length > 0;
+
+      setFormError(
+        "address1",
+        isValidAddress1 ? null : "Please enter a valid address"
+      );
+    } else if (key === "city") {
+      const isValidCity = value.length > 0;
+
+      setFormError("city", isValidCity ? null : "Please enter a city");
+    } else if (key === "phone") {
       const isValidPhoneNumber = value.length === 10;
 
       setFormError(
         "phone",
-        isValidPhoneNumber ? null : "Please enter a valid 10-digit phone number"
+        isValidPhoneNumber
+          ? null
+          : "Please enter a valid 10-digit phone number (numbers only)"
       );
     } else if (key === "zip") {
       const isValidZip = value.length === 5;
@@ -73,7 +87,6 @@ export default function CartItem(props) {
 
     let hasErrors = !form.checkValidity();
 
-    // if native form validation has already failed, skip checking custom validation
     if (hasErrors === false) {
       const formErrorsValues = Object.values(formErrors);
       formErrorsValues.forEach((formErrorsValue) => {
@@ -120,6 +133,7 @@ export default function CartItem(props) {
             <Form.Control
               required
               onChange={(e) => setFormValue("address1", e.target.value)}
+              isInvalid={formErrors.address1 !== null}
             />
             <Form.Control.Feedback type="invalid">
               {formErrors.address1}
@@ -141,6 +155,7 @@ export default function CartItem(props) {
                 <Form.Control
                   required
                   onChange={(e) => setFormValue("city", e.target.value)}
+                  isInvalid={formErrors.city !== null}
                 />
                 <Form.Control.Feedback type="invalid">
                   {formErrors.city}
@@ -196,7 +211,23 @@ export default function CartItem(props) {
             </Form.Group>
           </Form.Row>
 
-          <Button variant="primary" type="submit">
+          <Button
+            variant="primary"
+            type="submit"
+            onClick={(e) => {
+              e.preventDefault();
+              if (
+                formValues.address1.length &&
+                formValues.city.length > 0 &&
+                formValues.zip.length === 5 &&
+                formValues.phone.length === 10
+              ) {
+                toast.success("Reservation successfully added");
+              } else {
+                toast.error("Please complete form");
+              }
+            }}
+          >
             Confirm Reservation
           </Button>
         </Form>
