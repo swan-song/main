@@ -12,7 +12,7 @@ import { Link } from "react-router-dom";
 export default function Home() {
   return (
     <div>
-      <Header home>Homepage</Header>
+      <Header>Homepage</Header>
       <Container car image banner>
         <Header home>Your Dream Car Awaits</Header>
         <Info home>
