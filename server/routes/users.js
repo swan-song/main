@@ -11,10 +11,26 @@ const passport = require('passport');
 const initializePassport = require('../passport-config')
 const flash = require('express-flash'); 
 const session = require('express-session');
+const methodOverride = require('method-override');
+
+// async function getUser(email) {
+//   const userURL = "http://localhost:3001/get_user_by_email"
+//   const user = await fetch(userURL, {method: "GET", body: {email: email}})
+//   const validUser = users.find(user => user.email === email)
+// 	return validUser;
+// }
+// async function getUserByID(id) {
+// 	const { data, error } = await supabase.from("User").select();
+	// const validUserID = data.find((user) => user.id === id);
+// 	return validUserID;
+// }
 
 initializePassport(
   passport
+  // email => users.find(user => user.email === email),
+  // id => users.find(user => user.id === id)
 )
+
 
 app.use(cors({
   origin: ["http://localhost:3001"],
@@ -22,8 +38,8 @@ app.use(cors({
   credentials: true,
 })
 );
-app.use(express.urlencoded({ extended: false }));
 app.use(flash());
+app.use(express.urlencoded({ extended: false }));
 app.use(session({
   secret: process.env.SESSION_SECRET,
   resave: false,
@@ -32,6 +48,8 @@ app.use(session({
 
 app.use(passport.initialize())
 app.use(passport.session())
+app.use(methodOverride('_method'))
+
 router.get("/", async (req, res) => {
   res.send("Welcome to our node server!");
 });
@@ -58,22 +76,32 @@ router.post("/create_user", async (req, res) => {
 });
 
 // make a reservation
-router.post("/login", async (req, res) => {
-  const email = req.body.email;
-  const password = req.body.password;
-  const loginSuccess = await pool.query(
-    "SELECT * FROM users WHERE email = ? AND password = ?",
-    [email, password]
-  );
-  // (err, result) => {
-  //   res.send({err:err});
-  // }
-  if (loginSuccess.length > 0) {
-    res.send(loginSuccess.rows);
-  } else {
-    res.send({ Message: "Wrong email/password combination!" });
-  }
-});
+// router.post("/login", async (req, res) => {
+//   const email = req.body.email;
+//   const password = req.body.password;
+//   const loginSuccess = await pool.query(
+//     "SELECT * FROM users WHERE email = ?;",
+//     email,
+//   (err, result) => {
+//     if (err) {
+//       res.send({err:err});
+//     }
+
+//   if (loginSuccess) {
+//     bcrypt.compare(password, loginSuccess[0].password, (error, response) => {
+//       if (response) {
+//         res.send(loginSuccess.rows);
+//       } else {
+//     res.send({ Message: "Wrong email/password combination!" });
+//   }
+// });
+// } else {
+//   res.send({message: "User does not exist"});
+// }
+//   }
+//   );
+// });
+
 
 router.post("/make_reservation", async (req, res) => {
   try {
@@ -154,10 +182,27 @@ router.post("/delete_user/:id", async (req, res) => {
   }
 });
 
-router.post("/login", passport.authenticate('local', {
-  successRedirect: '/',
-  failureRedirect: '/login',
-  failureFlash: true
-}));
+// router.post("/login", passport.authenticate('local', {
+//   successRedirect: '/',
+//   failureRedirect: '/login',
+//   failureFlash: true
+// }));
+
+router.delete('/logout', (req, res) => {
+  req.logOut()
+  res.redirect('/login')
+})
+function checkAuthenticated(req, res, next) {
+  if (req.isAuthenticated()) {
+    return next()
+  }
+  res.redirect('/login')
+}
+function checkNotAuthenticated(req, res, next) {
+  if (req.isAuthenticated()) {
+    return res.redirect('/home')
+  }
+  next()
+}
 
 module.exports = router;
