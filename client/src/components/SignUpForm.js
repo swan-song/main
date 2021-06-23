@@ -5,6 +5,11 @@ import { Button } from "../components/styled-components/styled-components";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { supabase } from "../supabaseClient";
+import { useDispatch } from "react-redux";
+import { addUser } from "../actions/cart-actions";
+
+
+
 
 export default function SignUpForm() {
   const [validated, setValidated] = useState(false);
@@ -13,55 +18,31 @@ export default function SignUpForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [passwordTwo, setPasswordTwo] = useState("");
-  let history = useHistory();
+  const history = useHistory();
+  const dispatch = useDispatch();
+
 
   const handleSubmitData = async (event) => {
-    // console.log("fired");
-    // const form = event.currentTarget;
-    // if (form.checkValidity() === false) {
-    //   event.preventDefault();
-    //   event.stopPropagation();
-    // }
-    // setValidated(true);
-
     event.preventDefault();
-    // console.log("after event");
     const first_name = firstName;
     const last_name = lastName;
-    const body = {
-      first_name,
-      last_name,
-      email,
-      password,
-    };
-
-    // const { data, error } = await supabase
-    //   .from('users')
-    //   .insert([
-    //     body
-    //   ])
 
     const { user, session, error } = await supabase.auth.signUp({
       email: email,
       password: password,
     })
+    if (error) {
+      toast.error(error.message, {
+        position: toast.POSITION.TOP_CENTER,
+      });
+    } else {
+      addUser(dispatch, user.email)
+      toast.success(`Welcome ${first_name}!`, {
+        position: toast.POSITION.TOP_CENTER,
+      });
+      history.push("/")
+    }
 
-    // const dataURL = "http://localhost:3001/users/create_user";
-    // const response = await fetch(dataURL, {
-    //   method: "POST",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //     "Access-Control-Allow-Origin": "*",
-    //   },
-    //   body: JSON.stringify(body),
-    // });
-    // console.log(response);
-    // if (response.status === 200) {
-    //   history.push("/login");
-    // } else {
-    //   console.log("Error in signing you up", { response });
-    //   history.push("/signup");
-    // }
   };
   return (
     <div>

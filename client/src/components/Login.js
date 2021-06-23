@@ -4,6 +4,9 @@ import { useDispatch } from "react-redux";
 import { Button } from "../components/styled-components/styled-components";
 import { supabase } from "../supabaseClient";
 import { useHistory } from "react-router-dom";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { addUser } from "../actions/cart-actions";
 
 export default function Login() {
   const [email, setemail] = useState({});
@@ -21,8 +24,14 @@ export default function Login() {
     })
     console.log(user)
     if (error) {
-      alert(error.message)
+      toast.error(error.message, {
+        position: toast.POSITION.TOP_CENTER,
+      });
     } else {
+      addUser(dispatch, user.email)
+      toast.success(`Welcome Back!`, {
+        position: toast.POSITION.TOP_CENTER,
+      });
       history.push("/")
     }
   }

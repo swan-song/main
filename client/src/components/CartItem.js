@@ -97,7 +97,7 @@ export default function CartItem(props) {
     const { data, error } = await supabase
       .from('reservations')
       .insert([
-        formValues
+        formValues,
       ])
   };
 
