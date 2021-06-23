@@ -95,6 +95,7 @@ export default function CartItem(props) {
   const [validated, setValidated] = useState(false);
 
   const handleSubmit = async (event) => {
+    event.preventDefault()
     const form = event.currentTarget;
 
     let hasErrors = !form.checkValidity();
@@ -123,6 +124,23 @@ export default function CartItem(props) {
       .insert([
         formValues
       ])
+    if (error) {
+      toast.error(error.message)
+    } else {
+      toast.success("Reservation successfully added");
+      history.push("/confirmation")
+    }
+    // if (
+    //   formValues.address1.length &&
+    //   formValues.city.length > 0 &&
+    //   formValues.zip.length === 5 &&
+    //   formValues.phone.length === 10
+    // ) {
+    //   toast.success("Reservation successfully added");
+    //   history.push("/confirmation")
+    // } else {
+    //   toast.error("Please complete form");
+    // }
   };
 
   return (
@@ -227,24 +245,7 @@ export default function CartItem(props) {
               </Form.Control.Feedback>
             </Form.Group>
           </Form.Row>
-
-          <Button
-            variant="primary"
-            type="submit"
-            onClick={(e) => {
-              e.preventDefault();
-              if (
-                formValues.address1.length &&
-                formValues.city.length > 0 &&
-                formValues.zip.length === 5 &&
-                formValues.phone.length === 10
-              ) {
-                toast.success("Reservation successfully added");
-              } else {
-                toast.error("Please complete form");
-              }
-            }}
-          >
+          <Button>
             Confirm Reservation
           </Button>
         </Form>
