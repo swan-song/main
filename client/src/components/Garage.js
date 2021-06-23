@@ -6,6 +6,7 @@ import { getCars } from "../actions/car-actions";
 export default function Garage() {
   const dispatch = useDispatch();
   const cars = useSelector((state) => state.Cars);
+  console.log(cars)
 
   useEffect(() => {
     getCars(dispatch);

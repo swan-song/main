@@ -5,7 +5,10 @@ import {
   ADD_USER,
 } from "../action-types/cart-types";
 
-const initialState = { users: "", cars: [], hours: 0, date: "" };
+const userInStorage = localStorage.getItem("supabase.auth.token");
+const parsed = JSON.parse(userInStorage);
+
+const initialState = { users: parsed ? parsed.currentSession?.user?.email : "", cars: [], hours: 0, date: "" };
 
 const Cart = (state = initialState, action) => {
   let newState = state;
