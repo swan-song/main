@@ -74,7 +74,6 @@ export default function CartItem(props) {
 
     let hasErrors = !form.checkValidity();
 
-    // if native form validation has already failed, skip checking custom validation
     if (hasErrors === false) {
       const formErrorsValues = Object.values(formErrors);
       formErrorsValues.forEach((formErrorsValue) => {
@@ -93,12 +92,7 @@ export default function CartItem(props) {
       return;
     }
 
-    // POST to api here using form values
-    const { data, error } = await supabase
-      .from('users')
-      .insert([
-        formValues
-      ])
+    const { data, error } = await supabase.from("users").insert([formValues]);
   };
 
   return (
