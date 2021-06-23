@@ -74,7 +74,6 @@ export default function CartItem(props) {
 
     let hasErrors = !form.checkValidity();
 
-    // if native form validation has already failed, skip checking custom validation
     if (hasErrors === false) {
       const formErrorsValues = Object.values(formErrors);
       formErrorsValues.forEach((formErrorsValue) => {
