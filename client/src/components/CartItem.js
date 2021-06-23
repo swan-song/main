@@ -17,11 +17,20 @@ import { useHistory } from "react-router";
 
 export default function CartItem(props) {
   const dispatch = useDispatch();
+  const carName = useSelector((state) => state.Cart.cars[0].title)
   const hours = useSelector((state) => state.Cart.hours);
   const date = useSelector((state) => state.Cart.date);
   const history = useHistory();
+  const userEmail = useSelector((state) => state.Cart.users)
+  const total = props.car.rate * hours
 
+  // console.log(carName)
   const [formValues, setFormValues] = useState({
+    user_email: userEmail,
+    carName: carName,
+    date: date,
+    hours: hours,
+    total: total,
     address1: "",
     address2: "",
     city: "",
@@ -110,8 +119,10 @@ export default function CartItem(props) {
 
     // POST to api here using form values
     const { data, error } = await supabase
-      .from("reservations")
-      .insert([formValues]);
+      .from('reservations')
+      .insert([
+        formValues
+      ])
   };
 
   return (
@@ -123,7 +134,7 @@ export default function CartItem(props) {
         <Header>{props.car.title}</Header>
         <Info>Reservation Date: {date}</Info>
         <Info>Rental Duration: {hours} hours</Info>
-        <Info>Total: ${props.car.rate * hours}</Info>
+        <Info>Total: ${total}</Info>
         <Link to="/garage">
           <Button onClick={() => removeFromCart(dispatch, props.car.id)}>
             Change Reservation
