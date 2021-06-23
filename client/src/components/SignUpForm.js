@@ -31,6 +31,7 @@ export default function SignUpForm() {
       email: email,
       password: password,
     })
+    console.log(user)
     if (error) {
       toast.error(error.message, {
         position: toast.POSITION.TOP_CENTER,
