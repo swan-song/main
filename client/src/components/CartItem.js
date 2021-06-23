@@ -13,11 +13,13 @@ import { Form, Col } from "react-bootstrap";
 import stateCodes from "../constants/stateCodes";
 import { supabase } from "../supabaseClient";
 import { toast } from "react-toastify";
+import { useHistory } from "react-router";
 
 export default function CartItem(props) {
   const dispatch = useDispatch();
   const hours = useSelector((state) => state.Cart.hours);
   const date = useSelector((state) => state.Cart.date);
+  const history = useHistory();
 
   const [formValues, setFormValues] = useState({
     address1: "",

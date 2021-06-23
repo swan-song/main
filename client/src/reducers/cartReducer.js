@@ -11,13 +11,6 @@ const Cart = (state = initialState, action) => {
   let newState = state;
 
   switch (action.type) {
-    case ADD_USER:
-      newState = {
-        ...state,
-        cars: [(state.users = action.payload)],
-      };
-      console.log(state.users);
-      break;
     case ADD_TO_CART:
       newState = {
         ...state,
