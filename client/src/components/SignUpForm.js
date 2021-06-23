@@ -35,16 +35,16 @@ export default function SignUpForm() {
       password,
     };
 
-    const { data, error } = await supabase
-      .from('users')
-      .insert([
-        body
-      ])
+    // const { data, error } = await supabase
+    //   .from('users')
+    //   .insert([
+    //     body
+    //   ])
 
-    // const { user, session, error } = await supabase.auth.signUp({
-    //   email: email,
-    //   password: password,
-    // })
+    const { user, session, error } = await supabase.auth.signUp({
+      email: email,
+      password: password,
+    })
 
     // const dataURL = "http://localhost:3001/users/create_user";
     // const response = await fetch(dataURL, {

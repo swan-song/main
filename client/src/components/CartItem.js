@@ -92,7 +92,12 @@ export default function CartItem(props) {
       return;
     }
 
-    const { data, error } = await supabase.from("users").insert([formValues]);
+    // POST to api here using form values
+    const { data, error } = await supabase
+      .from('reservations')
+      .insert([
+        formValues
+      ])
   };
 
   return (

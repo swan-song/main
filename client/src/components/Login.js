@@ -3,19 +3,28 @@ import { Form } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import { Button } from "../components/styled-components/styled-components";
 import { supabase } from "../supabaseClient";
+import { useHistory } from "react-router-dom";
 
 export default function Login() {
   const [email, setemail] = useState({});
   const [password, setpassword] = useState({});
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(false)
+  const history = useHistory();
+
 
   const handleLogin = async (e) => {
     e.preventDefault()
     const { user, session, error } = await supabase.auth.signIn({
-      email: { email },
-      password: { password },
+      email: email,
+      password: password
     })
+    console.log(user)
+    if (error) {
+      alert(error.message)
+    } else {
+      history.push("/")
+    }
   }
 
   return (
