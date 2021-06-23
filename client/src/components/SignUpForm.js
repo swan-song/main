@@ -4,6 +4,7 @@ import { Form, Row, InputGroup, Container } from "react-bootstrap";
 import { Button } from "../components/styled-components/styled-components";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { supabase } from "../supabaseClient";
 
 export default function SignUpForm() {
   const [validated, setValidated] = useState(false);
@@ -24,7 +25,7 @@ export default function SignUpForm() {
     // setValidated(true);
 
     event.preventDefault();
-    console.log("after event");
+    // console.log("after event");
     const first_name = firstName;
     const last_name = lastName;
     const body = {
@@ -34,22 +35,33 @@ export default function SignUpForm() {
       password,
     };
 
-    const dataURL = "http://localhost:3001/users/create_user";
-    const response = await fetch(dataURL, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "Access-Control-Allow-Origin": "*",
-      },
-      body: JSON.stringify(body),
-    });
-    console.log(response);
-    if (response.status === 200) {
-      history.push("/login");
-    } else {
-      console.log("Error in signing you up", { response });
-      history.push("/signup");
-    }
+    const { data, error } = await supabase
+      .from('users')
+      .insert([
+        body
+      ])
+
+    // const { user, session, error } = await supabase.auth.signUp({
+    //   email: email,
+    //   password: password,
+    // })
+
+    // const dataURL = "http://localhost:3001/users/create_user";
+    // const response = await fetch(dataURL, {
+    //   method: "POST",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //     "Access-Control-Allow-Origin": "*",
+    //   },
+    //   body: JSON.stringify(body),
+    // });
+    // console.log(response);
+    // if (response.status === 200) {
+    //   history.push("/login");
+    // } else {
+    //   console.log("Error in signing you up", { response });
+    //   history.push("/signup");
+    // }
   };
   return (
     <div>
