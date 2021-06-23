@@ -1,5 +1,5 @@
-if (process.env.NODE_ENV !== 'production') {
-  require('dotenv').config()
+if (process.env.NODE_ENV !== "production") {
+  require("dotenv").config();
 }
 const router = require("express").Router();
 const express = require("express");
@@ -7,6 +7,21 @@ const app = express();
 const pool = require("../db");
 const cors = require("cors");
 const bcrypt = require("bcrypt");
+<<<<<<< HEAD
+const passport = require("passport");
+const initializePassport = require("../passport-config");
+const flash = require("express-flash");
+const session = require("express-session");
+
+initializePassport(passport);
+
+app.use(
+  cors({
+    origin: ["http://localhost:3001"],
+    methods: ["GET", "POST"],
+    credentials: true,
+  })
+=======
 const passport = require('passport');
 const initializePassport = require('../passport-config')
 const flash = require('express-flash'); 
@@ -37,8 +52,21 @@ app.use(cors({
   methods: ["GET", "POST"],
   credentials: true,
 })
+>>>>>>> 49c2fd95505feef4f1d786be32903a6e9eabacdd
 );
 app.use(flash());
+<<<<<<< HEAD
+app.use(
+  session({
+    secret: process.env.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: false,
+  })
+);
+
+app.use(passport.initialize());
+app.use(passport.session());
+=======
 app.use(express.urlencoded({ extended: false }));
 app.use(session({
   secret: process.env.SESSION_SECRET,
@@ -50,6 +78,7 @@ app.use(passport.initialize())
 app.use(passport.session())
 app.use(methodOverride('_method'))
 
+>>>>>>> 49c2fd95505feef4f1d786be32903a6e9eabacdd
 router.get("/", async (req, res) => {
   res.send("Welcome to our node server!");
 });
@@ -57,11 +86,11 @@ router.get("/", async (req, res) => {
 // Create a User
 router.post("/create_user", async (req, res) => {
   try {
-    const salt = await bcrypt.genSalt(); 
-    console.log(salt)
+    const salt = await bcrypt.genSalt();
+    console.log(salt);
     const { first_name, last_name, email } = req.body;
-    const password = await bcrypt.hash(req.body.password, salt)
-    console.log(password)
+    const password = await bcrypt.hash(req.body.password, salt);
+    console.log(password);
     const createUser = await pool.query(
       "INSERT INTO users (first_name,last_name, email, password) VALUES($1,$2,$3,$4)",
       [first_name, last_name, email, password]
@@ -70,7 +99,7 @@ router.post("/create_user", async (req, res) => {
     console.log("Created User.");
     res.status(200).send(200);
   } catch (err) {
-    console.log(err)
+    console.log(err);
     // res.status(400).send("User was not created.");
   }
 });
@@ -144,10 +173,9 @@ router.get("/get_user/:id", async (req, res) => {
 router.get("/get_user_by_email", async (req, res) => {
   try {
     const { email } = req.body;
-    const getUser = await pool.query(
-      "SELECT * from users WHERE email =$1",
-      [email]
-    );
+    const getUser = await pool.query("SELECT * from users WHERE email =$1", [
+      email,
+    ]);
     res.json(getUser.rows);
   } catch (err) {
     console.log(err.message);
@@ -182,6 +210,16 @@ router.post("/delete_user/:id", async (req, res) => {
   }
 });
 
+<<<<<<< HEAD
+router.post(
+  "/login",
+  passport.authenticate("local", {
+    successRedirect: "/",
+    failureRedirect: "/login",
+    failureFlash: true,
+  })
+);
+=======
 // router.post("/login", passport.authenticate('local', {
 //   successRedirect: '/',
 //   failureRedirect: '/login',
@@ -204,5 +242,6 @@ function checkNotAuthenticated(req, res, next) {
   }
   next()
 }
+>>>>>>> 49c2fd95505feef4f1d786be32903a6e9eabacdd
 
 module.exports = router;

@@ -5,6 +5,8 @@ import { Button } from "../components/styled-components/styled-components";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { supabase } from "../supabaseClient";
+import { useDispatch } from "react-redux";
+import { addUser } from "../actions/cart-actions";
 
 export default function SignUpForm() {
   const [validated, setValidated] = useState(false);
@@ -13,23 +15,29 @@ export default function SignUpForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [passwordTwo, setPasswordTwo] = useState("");
-  let history = useHistory();
+  const history = useHistory();
+  const dispatch = useDispatch();
 
   const handleSubmitData = async (event) => {
     event.preventDefault();
     const first_name = firstName;
     const last_name = lastName;
-    const body = {
-      first_name,
-      last_name,
-      email,
-      password,
-    };
 
     const { user, session, error } = await supabase.auth.signUp({
       email: email,
       password: password,
     });
+    if (error) {
+      toast.error(error.message, {
+        position: toast.POSITION.TOP_CENTER,
+      });
+    } else {
+      addUser(dispatch, user.email);
+      toast.success(`Welcome ${first_name}!`, {
+        position: toast.POSITION.TOP_CENTER,
+      });
+      history.push("/");
+    }
   };
   return (
     <div>
