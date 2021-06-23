@@ -5,13 +5,6 @@ import {
   ADD_USER,
 } from "../action-types/cart-types";
 
-export const addUser = (dispatch, user) => {
-  dispatch({
-    type: ADD_USER,
-    payload: user,
-  });
-};
-
 export const addToCart = (dispatch, car) => {
   dispatch({
     type: ADD_TO_CART,
@@ -30,5 +23,12 @@ export const setDateTime = (dispatch, hours, date) => {
   dispatch({
     type: SET_DATE_TIME,
     payload: [hours, date],
+  });
+};
+
+export const addUser = (dispatch, user) => {
+  dispatch({
+    type: ADD_USER,
+    payload: user,
   });
 };

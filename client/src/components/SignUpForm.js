@@ -1,10 +1,12 @@
-import React, { useState, useCallback } from "react";
-import { useHistory } from "react-router-dom";
+import React, { useState } from "react";
+import { Link, Redirect, useHistory } from "react-router-dom";
 import { Form, Row, InputGroup, Container } from "react-bootstrap";
 import { Button } from "../components/styled-components/styled-components";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { supabase } from "../supabaseClient";
+import { useDispatch } from "react-redux";
+import { addUser } from "../actions/cart-actions";
 
 export default function SignUpForm() {
   const [validated, setValidated] = useState(false);
@@ -13,55 +15,29 @@ export default function SignUpForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [passwordTwo, setPasswordTwo] = useState("");
-  let history = useHistory();
+  const history = useHistory();
+  const dispatch = useDispatch();
 
   const handleSubmitData = async (event) => {
-    // console.log("fired");
-    // const form = event.currentTarget;
-    // if (form.checkValidity() === false) {
-    //   event.preventDefault();
-    //   event.stopPropagation();
-    // }
-    // setValidated(true);
-
     event.preventDefault();
-    // console.log("after event");
     const first_name = firstName;
     const last_name = lastName;
-    const body = {
-      first_name,
-      last_name,
-      email,
-      password,
-    };
-
-    // const { data, error } = await supabase
-    //   .from('users')
-    //   .insert([
-    //     body
-    //   ])
 
     const { user, session, error } = await supabase.auth.signUp({
       email: email,
       password: password,
     });
-
-    // const dataURL = "http://localhost:3001/users/create_user";
-    // const response = await fetch(dataURL, {
-    //   method: "POST",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //     "Access-Control-Allow-Origin": "*",
-    //   },
-    //   body: JSON.stringify(body),
-    // });
-    // console.log(response);
-    // if (response.status === 200) {
-    //   history.push("/login");
-    // } else {
-    //   console.log("Error in signing you up", { response });
-    //   history.push("/signup");
-    // }
+    if (error) {
+      toast.error(error.message, {
+        position: toast.POSITION.TOP_CENTER,
+      });
+    } else {
+      addUser(dispatch, user.email);
+      toast.success(`Welcome ${first_name}!`, {
+        position: toast.POSITION.TOP_CENTER,
+      });
+      history.push("/");
+    }
   };
   return (
     <div>
@@ -75,7 +51,7 @@ export default function SignUpForm() {
             onSubmit={handleSubmitData}
           >
             <Row className="mb-3">
-              <Form.Group md="3" controlId="validationFirstName">
+              <Form.Group md="3" controlId="validationCustom01">
                 <Form.Label>First name</Form.Label>
                 <Form.Control
                   required
@@ -86,7 +62,7 @@ export default function SignUpForm() {
                 />
                 <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
               </Form.Group>
-              <Form.Group md="3" controlId="validationLastName">
+              <Form.Group md="3" controlId="validationCustom02">
                 <Form.Label>Last name</Form.Label>
                 <Form.Control
                   required
@@ -95,72 +71,53 @@ export default function SignUpForm() {
                   onChange={(e) => setLastName(e.target.value)}
                   placeholder="Last name"
                 />
-                <Form.Control.Feedback type="invalid">
-                  Please enter a last name
-                </Form.Control.Feedback>
+                <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
               </Form.Group>
-              <Form.Group md="3" controlId="validationEmail">
+              <Form.Group md="3" controlId="validationCustomUsername">
                 <Form.Label>Email</Form.Label>
                 <InputGroup hasValidation>
                   <Form.Control
-                    required
                     name="email"
                     type="email"
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="Email"
+                    aria-describedby="inputGroupPrepend"
+                    required
                   />
                   <Form.Control.Feedback type="invalid">
-                    Please enter a valid email
+                    Please enter a valid email.
                   </Form.Control.Feedback>
                 </InputGroup>
               </Form.Group>
             </Row>
 
             <Row className="mb-3">
-              <Form.Group md="3" controlId="validationPassword">
+              <Form.Group md="3" controlId="validationCustom03">
                 <Form.Label>Password</Form.Label>
                 <Form.Control
-                  required
                   name="password"
                   type="password"
                   onChange={(e) => setPassword(e.target.value)}
                   placeholder="Password"
+                  required
                 />
                 <Form.Control.Feedback type="invalid">
-                  Please provide a password
+                  Please provide a valid password.
                 </Form.Control.Feedback>
               </Form.Group>
-              <Form.Group md="3" controlId="validationPsswordTwo">
+              <Form.Group md="3" controlId="validationCustom03">
                 <Form.Label>Re-Enter Password</Form.Label>
                 <Form.Control
-                  required
                   type="password"
-                  onChange={(e) => setPasswordTwo("password2", e.target.value)}
                   placeholder="Re-Enter Password"
+                  required
                 />
                 <Form.Control.Feedback type="invalid">
-                  Passwords must match
+                  Passwords must match.
                 </Form.Control.Feedback>
               </Form.Group>
             </Row>
-            <Button
-              type="submit"
-              onClick={() => {
-                if (
-                  firstName.length > 0 &&
-                  lastName.length > 0 &&
-                  email.length > 0 &&
-                  password.length > 0 &&
-                  passwordTwo === password
-                ) {
-                  toast.success("success");
-                } else {
-                  toast.error("error");
-                }
-              }}
-            >
-              Register
-            </Button>
+            <Button type="submit">Register</Button>
           </Form>
         </div>
       </Container>

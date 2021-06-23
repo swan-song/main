@@ -37,6 +37,12 @@ const Cart = (state = initialState, action) => {
         date: (state.date = action.payload[1]),
       };
       break;
+    case ADD_USER:
+      newState = {
+        ...state,
+        users: (state.users = action.payload),
+      };
+      break;
     default:
       break;
   }
