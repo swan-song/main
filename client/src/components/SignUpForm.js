@@ -16,16 +16,7 @@ export default function SignUpForm() {
   let history = useHistory();
 
   const handleSubmitData = async (event) => {
-    // console.log("fired");
-    // const form = event.currentTarget;
-    // if (form.checkValidity() === false) {
-    //   event.preventDefault();
-    //   event.stopPropagation();
-    // }
-    // setValidated(true);
-
     event.preventDefault();
-    // console.log("after event");
     const first_name = firstName;
     const last_name = lastName;
     const body = {
@@ -35,33 +26,10 @@ export default function SignUpForm() {
       password,
     };
 
-    // const { data, error } = await supabase
-    //   .from('users')
-    //   .insert([
-    //     body
-    //   ])
-
     const { user, session, error } = await supabase.auth.signUp({
       email: email,
       password: password,
-    })
-
-    // const dataURL = "http://localhost:3001/users/create_user";
-    // const response = await fetch(dataURL, {
-    //   method: "POST",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //     "Access-Control-Allow-Origin": "*",
-    //   },
-    //   body: JSON.stringify(body),
-    // });
-    // console.log(response);
-    // if (response.status === 200) {
-    //   history.push("/login");
-    // } else {
-    //   console.log("Error in signing you up", { response });
-    //   history.push("/signup");
-    // }
+    });
   };
   return (
     <div>
