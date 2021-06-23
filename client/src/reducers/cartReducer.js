@@ -2,14 +2,22 @@ import {
   ADD_TO_CART,
   REMOVE_FROM_CART,
   SET_DATE_TIME,
+  ADD_USER,
 } from "../action-types/cart-types";
 
-const initialState = { cars: [], hours: 0, date: "" };
+const initialState = { users: "", cars: [], hours: 0, date: "" };
 
 const Cart = (state = initialState, action) => {
   let newState = state;
 
   switch (action.type) {
+    case ADD_USER:
+      newState = {
+        ...state,
+        cars: [(state.users = action.payload)],
+      };
+      console.log(state.users);
+      break;
     case ADD_TO_CART:
       newState = {
         ...state,

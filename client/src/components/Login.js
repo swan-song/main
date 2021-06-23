@@ -3,30 +3,36 @@ import { Form } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import { Button } from "../components/styled-components/styled-components";
 import { supabase } from "../supabaseClient";
+import { useHistory } from "react-router-dom";
+import { addUser } from "../actions/cart-actions";
 
 export default function Login() {
   const [email, setemail] = useState({});
   const [password, setpassword] = useState({});
   const dispatch = useDispatch();
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(false);
+  const history = useHistory();
 
   const handleLogin = async (e) => {
-    e.preventDefault()
+    e.preventDefault();
     const { user, session, error } = await supabase.auth.signIn({
-      email: { email },
-      password: { password },
-    })
-  }
+      email: email,
+      password: password,
+    });
+    console.log(user);
+    if (error) {
+      alert(error.message);
+    } else {
+      addUser(dispatch, user.email);
+      history.push("/");
+    }
+  };
 
   return (
     <div>
       <h1>Login</h1>
       <div className="loginContainer">
-<<<<<<< HEAD
-        <Form action="/login" method="post">
-=======
         <Form onSubmit={handleLogin}>
->>>>>>> 49c2fd95505feef4f1d786be32903a6e9eabacdd
           <Form.Group>
             <Form.Label>Email</Form.Label>
             <Form.Control

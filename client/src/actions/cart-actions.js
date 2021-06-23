@@ -2,7 +2,15 @@ import {
   ADD_TO_CART,
   REMOVE_FROM_CART,
   SET_DATE_TIME,
+  ADD_USER,
 } from "../action-types/cart-types";
+
+export const addUser = (dispatch, user) => {
+  dispatch({
+    type: ADD_USER,
+    payload: user,
+  });
+};
 
 export const addToCart = (dispatch, car) => {
   dispatch({

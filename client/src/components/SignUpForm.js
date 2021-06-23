@@ -35,12 +35,16 @@ export default function SignUpForm() {
       password,
     };
 
-    const { data, error } = await supabase.from("users").insert([body]);
+    // const { data, error } = await supabase
+    //   .from('users')
+    //   .insert([
+    //     body
+    //   ])
 
-    // const { user, session, error } = await supabase.auth.signUp({
-    //   email: email,
-    //   password: password,
-    // })
+    const { user, session, error } = await supabase.auth.signUp({
+      email: email,
+      password: password,
+    });
 
     // const dataURL = "http://localhost:3001/users/create_user";
     // const response = await fetch(dataURL, {
@@ -71,7 +75,7 @@ export default function SignUpForm() {
             onSubmit={handleSubmitData}
           >
             <Row className="mb-3">
-              <Form.Group md="3" controlId="validationCustom01">
+              <Form.Group md="3" controlId="validationFirstName">
                 <Form.Label>First name</Form.Label>
                 <Form.Control
                   required
@@ -82,7 +86,7 @@ export default function SignUpForm() {
                 />
                 <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
               </Form.Group>
-              <Form.Group md="3" controlId="validationCustom02">
+              <Form.Group md="3" controlId="validationLastName">
                 <Form.Label>Last name</Form.Label>
                 <Form.Control
                   required
@@ -95,7 +99,7 @@ export default function SignUpForm() {
                   Please enter a last name
                 </Form.Control.Feedback>
               </Form.Group>
-              <Form.Group md="3" controlId="validationCustomUsername">
+              <Form.Group md="3" controlId="validationEmail">
                 <Form.Label>Email</Form.Label>
                 <InputGroup hasValidation>
                   <Form.Control
@@ -113,7 +117,7 @@ export default function SignUpForm() {
             </Row>
 
             <Row className="mb-3">
-              <Form.Group md="3" controlId="validationCustom03">
+              <Form.Group md="3" controlId="validationPassword">
                 <Form.Label>Password</Form.Label>
                 <Form.Control
                   required
@@ -126,17 +130,16 @@ export default function SignUpForm() {
                   Please provide a password
                 </Form.Control.Feedback>
               </Form.Group>
-              <Form.Group md="3" controlId="validationCustom03">
+              <Form.Group md="3" controlId="validationPsswordTwo">
                 <Form.Label>Re-Enter Password</Form.Label>
                 <Form.Control
                   required
                   type="password"
-                  onChange={(e) => setFormValue("password2", e.target.value)}
+                  onChange={(e) => setPasswordTwo("password2", e.target.value)}
                   placeholder="Re-Enter Password"
-                  isInvalid={formErrors.password2 !== null}
                 />
                 <Form.Control.Feedback type="invalid">
-                  {formErrors.password2}
+                  Passwords must match
                 </Form.Control.Feedback>
               </Form.Group>
             </Row>
@@ -148,7 +151,7 @@ export default function SignUpForm() {
                   lastName.length > 0 &&
                   email.length > 0 &&
                   password.length > 0 &&
-                  formValues.password2 === password
+                  passwordTwo === password
                 ) {
                   toast.success("success");
                 } else {
