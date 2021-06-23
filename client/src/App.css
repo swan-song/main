@@ -12,3 +12,10 @@
   display: flex;
   justify-content: center;
 }
+
+.confirmationContainer {
+  background: url("../src/assets/background.gif");
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100vh;
+}
