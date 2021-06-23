@@ -11,7 +11,11 @@ import { removeFromCart } from "../actions/cart-actions";
 import { Link } from "react-router-dom";
 import { Form, Col } from "react-bootstrap";
 import stateCodes from "../constants/stateCodes";
+<<<<<<< HEAD
 import { toast } from "react-toastify";
+=======
+import { supabase } from "../supabaseClient";
+>>>>>>> 49c2fd95505feef4f1d786be32903a6e9eabacdd
 
 export default function CartItem(props) {
   const dispatch = useDispatch();
@@ -82,7 +86,7 @@ export default function CartItem(props) {
 
   const [validated, setValidated] = useState(false);
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     const form = event.currentTarget;
 
     let hasErrors = !form.checkValidity();
@@ -106,6 +110,11 @@ export default function CartItem(props) {
     }
 
     // POST to api here using form values
+    const { data, error } = await supabase
+      .from('users')
+      .insert([
+        formValues
+      ])
   };
 
   return (

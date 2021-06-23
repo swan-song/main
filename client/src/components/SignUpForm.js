@@ -4,6 +4,7 @@ import { Form, Row, InputGroup, Container } from "react-bootstrap";
 import { Button } from "../components/styled-components/styled-components";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { supabase } from "../supabaseClient";
 
 export default function SignUpForm() {
   const [validated, setValidated] = useState(false);
@@ -11,55 +12,20 @@ export default function SignUpForm() {
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [password2, setPassword2] = useState("");
-  const history = useHistory();
-
-  const [formValues, setFormValues] = useState({
-    password2: "",
-  });
-
-  const [formErrors, setFormErrors] = useState({
-    password2: null,
-  });
-
-  const setFormError = useCallback((key, error) => {
-    setFormErrors((formErrors) => {
-      return {
-        ...formErrors,
-        [key]: error,
-      };
-    });
-  }, []);
-
-  const setFormValue = useCallback((key, value) => {
-    if (key === "password2") {
-      const isValidPassword = value === password;
-
-      setFormError(
-        "password2",
-        isValidPassword ? null : "Passwords must match"
-      );
-    }
-
-    setFormValues((formValues) => {
-      return {
-        ...formValues,
-        [key]: value,
-      };
-    });
-  }, []);
+  const [passwordTwo, setPasswordTwo] = useState("");
+  let history = useHistory();
 
   const handleSubmitData = async (event) => {
-    console.log("fired");
-    const form = event.currentTarget;
-    if (form.checkValidity() === false) {
-      event.preventDefault();
-      event.stopPropagation();
-    }
-    setValidated(true);
+    // console.log("fired");
+    // const form = event.currentTarget;
+    // if (form.checkValidity() === false) {
+    //   event.preventDefault();
+    //   event.stopPropagation();
+    // }
+    // setValidated(true);
 
     event.preventDefault();
-    console.log("after event");
+    // console.log("after event");
     const first_name = firstName;
     const last_name = lastName;
     const body = {
@@ -69,24 +35,41 @@ export default function SignUpForm() {
       password,
     };
 
-    const dataURL = "http://localhost:3001/users/create_user";
-    console.log(dataURL);
-    const response = await fetch(dataURL, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "Access-Control-Allow-Origin": "*",
-      },
-      body: JSON.stringify(body),
-    });
-  };
+    const { data, error } = await supabase.from("users").insert([body]);
 
+    // const { user, session, error } = await supabase.auth.signUp({
+    //   email: email,
+    //   password: password,
+    // })
+
+    // const dataURL = "http://localhost:3001/users/create_user";
+    // const response = await fetch(dataURL, {
+    //   method: "POST",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //     "Access-Control-Allow-Origin": "*",
+    //   },
+    //   body: JSON.stringify(body),
+    // });
+    // console.log(response);
+    // if (response.status === 200) {
+    //   history.push("/login");
+    // } else {
+    //   console.log("Error in signing you up", { response });
+    //   history.push("/signup");
+    // }
+  };
   return (
     <div>
       <h1>Register</h1>
       <Container fluid>
         <div className="signUpContainer">
-          <Form noValidate validated={validated} onSubmit={handleSubmitData}>
+          <Form
+            // noValidate
+            // required
+            // validated={validated}
+            onSubmit={handleSubmitData}
+          >
             <Row className="mb-3">
               <Form.Group md="3" controlId="validationCustom01">
                 <Form.Label>First name</Form.Label>
@@ -97,9 +80,7 @@ export default function SignUpForm() {
                   onChange={(e) => setFirstName(e.target.value)}
                   placeholder="First name"
                 />
-                <Form.Control.Feedback type="invalid">
-                  Please enter a first name
-                </Form.Control.Feedback>
+                <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
               </Form.Group>
               <Form.Group md="3" controlId="validationCustom02">
                 <Form.Label>Last name</Form.Label>
