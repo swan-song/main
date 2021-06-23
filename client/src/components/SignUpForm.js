@@ -8,9 +8,6 @@ import { supabase } from "../supabaseClient";
 import { useDispatch } from "react-redux";
 import { addUser } from "../actions/cart-actions";
 
-
-
-
 export default function SignUpForm() {
   const [validated, setValidated] = useState(false);
   const [firstName, setFirstName] = useState("");
@@ -21,7 +18,6 @@ export default function SignUpForm() {
   const history = useHistory();
   const dispatch = useDispatch();
 
-
   const handleSubmitData = async (event) => {
     event.preventDefault();
     const first_name = firstName;
@@ -30,20 +26,18 @@ export default function SignUpForm() {
     const { user, session, error } = await supabase.auth.signUp({
       email: email,
       password: password,
-    })
-    console.log(user)
+    });
     if (error) {
       toast.error(error.message, {
         position: toast.POSITION.TOP_CENTER,
       });
     } else {
-      addUser(dispatch, user.email)
+      addUser(dispatch, user.email);
       toast.success(`Welcome ${first_name}!`, {
         position: toast.POSITION.TOP_CENTER,
       });
-      history.push("/")
+      history.push("/");
     }
-
   };
   return (
     <div>

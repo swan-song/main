@@ -12,29 +12,28 @@ export default function Login() {
   const [email, setemail] = useState({});
   const [password, setpassword] = useState({});
   const dispatch = useDispatch();
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(false);
   const history = useHistory();
 
-
   const handleLogin = async (e) => {
-    e.preventDefault()
+    e.preventDefault();
     const { user, session, error } = await supabase.auth.signIn({
       email: email,
-      password: password
-    })
-    console.log(user)
+      password: password,
+    });
+    console.log(user);
     if (error) {
       toast.error(error.message, {
         position: toast.POSITION.TOP_CENTER,
       });
     } else {
-      addUser(dispatch, user.email)
+      addUser(dispatch, user.email);
       toast.success(`Welcome Back!`, {
         position: toast.POSITION.TOP_CENTER,
       });
-      history.push("/")
+      history.push("/");
     }
-  }
+  };
 
   return (
     <div>
