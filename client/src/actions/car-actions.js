@@ -1,13 +1,14 @@
 import { GET_CARS, SELECT_CAR } from "../action-types/car-action-types";
+import { supabase } from "../supabaseClient";
 
-const dataURL = "http://localhost:3001/getcars";
 
 export const getCars = async (dispatch) => {
-  const response = await fetch(dataURL);
-  const jsonData = await response.json();
+  const { data, error } = await supabase
+    .from('products')
+    .select()
   dispatch({
     type: GET_CARS,
-    payload: jsonData,
+    payload: data,
   });
 };
 
