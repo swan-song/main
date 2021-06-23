@@ -17,12 +17,12 @@ import { useHistory } from "react-router";
 
 export default function CartItem(props) {
   const dispatch = useDispatch();
-  const carName = useSelector((state) => state.Cart.cars[0].title)
+  const carName = useSelector((state) => state.Cart.cars[0].title);
   const hours = useSelector((state) => state.Cart.hours);
   const date = useSelector((state) => state.Cart.date);
   const history = useHistory();
-  const userEmail = useSelector((state) => state.Cart.users)
-  const total = props.car.rate * hours
+  const userEmail = useSelector((state) => state.Cart.users);
+  const total = props.car.rate * hours;
 
   // console.log(carName)
   const [formValues, setFormValues] = useState({
@@ -38,6 +38,8 @@ export default function CartItem(props) {
     zip: "",
     phone: "",
   });
+
+  console.log(formValues);
 
   const [formErrors, setFormErrors] = useState({
     address1: null,
