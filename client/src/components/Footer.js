@@ -76,7 +76,12 @@ export default function Footer() {
                   </a>
                 </li>
                 <li className="mb-2">
-                  <a href="https://github.com/swan-song" className="text-muted" target="_blank" rel="noopener noreferrer">
+                  <a
+                    href="https://github.com/swan-song"
+                    className="text-muted"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                     Contributors
                   </a>
                 </li>
@@ -87,8 +92,16 @@ export default function Footer() {
                 Medium Article
               </h6>
               <p className="text-muted mb-4">
-                Follow this <a href="https://medium.com" target="_blank" rel="noopener noreferrer">link</a> to check out the Medium article that we all
-                collectively contributed to!
+                Follow this{" "}
+                <a
+                  href="https://medium.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  link
+                </a>{" "}
+                to check out the Medium article that we all collectively
+                contributed to!
               </p>
             </div>
           </div>
@@ -97,7 +110,7 @@ export default function Footer() {
         <div className="bg-light py-4">
           <div className="container text-center">
             <p className="text-muted mb-0 py-2">
-              © 2021 Branding. All rights reserved.
+              © 2021 Luxury Motor Group. All rights reserved.
             </p>
           </div>
         </div>

@@ -104,6 +104,7 @@ export const Container = styled.div`
 
   height: ${(props) => (props.image ? "25rem" : "")};
   width: ${(props) => (props.image ? "100vw" : "")};
+  margin-bottom: ${(props) => (props.image ? "2rem" : "")};
 
   @media (min-width: 480px) {
     height: ${(props) => (props.image ? "30rem" : "")};
@@ -115,7 +116,7 @@ export const Container = styled.div`
   }
 
   @media (min-width: 630px) {
-    height: ${(props) => (props.image ? "auto" : "")};
+    // height: ${(props) => (props.image ? "auto" : "")};
     width: ${(props) => (props.image ? "75vw" : "")};
   }
 
@@ -126,9 +127,26 @@ export const Container = styled.div`
 
   width: ${(props) => (props.info ? "80vw" : "")};
 
+  @media (min-width: 630px) {
+    width: ${(props) => (props.info ? "70%" : "")};
+  }
+
+  @media (min-width: 860px) {
+    width: ${(props) => (props.info ? "60%" : "")};
+  }
+
+  @media (min-width: 1000px) {
+    width: ${(props) => (props.info ? "40rem" : "")};
+  }
+
   margin-bottom: ${(props) => (props.car ? "2rem" : "")};
   border-bottom: ${(props) => (props.car ? "1px lightgray solid" : "")};
   padding-bottom: ${(props) => (props.car ? "2rem" : "")};
+
+  @media (max-width: 400px) {
+    height: ${(props) => (props.car ? "30rem" : "")};
+    width: ${(props) => (props.car ? "100%" : "")};
+  }
 
   @media (min-width: 630px) {
     height: ${(props) => (props.car ? "35rem" : "")};
@@ -147,10 +165,9 @@ export const Container = styled.div`
   @media (min-width: 1600px) {
     display: ${(props) => (props.garage ? "grid" : "")};
     grid-template-columns: ${(props) => (props.garage ? "1fr 1fr" : "")};
+    height: ${(props) => (props.garage ? "auto" : "")};
     width: ${(props) => (props.garage ? "80vw" : "")};
   }
-
-  padding-top: ${(props) => (props.info ? "2rem" : "")};
 
   display: ${(props) => (props.home ? "" : "flex")};
   flex-direction: ${(props) => (props.home ? "" : "column")};
