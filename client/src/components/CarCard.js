@@ -2,7 +2,7 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import {
   Image,
-  Header,
+  SubHeader,
   Button,
   Container,
 } from "./styled-components/styled-components";
@@ -18,7 +18,7 @@ export default function CarCard(props) {
         <Container image>
           <Image src={props.car.image} />
         </Container>
-        <Header>{props.car.title}</Header>
+        <SubHeader>{props.car.title}</SubHeader>
         <Link to="/cars/:id">
           <Button details onClick={() => selectCar(dispatch, props.car)}>
             Details

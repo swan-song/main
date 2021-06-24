@@ -24,7 +24,6 @@ export default function CartItem(props) {
   const userEmail = useSelector((state) => state.Cart.users);
   const total = props.car.rate * hours;
 
-  // console.log(carName)
   const [formValues, setFormValues] = useState({
     user_email: userEmail,
     carName: carName,
@@ -38,6 +37,8 @@ export default function CartItem(props) {
     zip: "",
     phone: "",
   });
+
+  console.log(formValues);
 
   const [formErrors, setFormErrors] = useState({
     address1: null,
@@ -95,7 +96,8 @@ export default function CartItem(props) {
   const [validated, setValidated] = useState(false);
 
   const handleSubmit = async (event) => {
-    // const form = event.currentTarget;
+    event.preventDefault();
+    const form = event.currentTarget;
 
     // let hasErrors = !form.checkValidity();
 
@@ -117,11 +119,15 @@ export default function CartItem(props) {
     //   return;
     // }
 
-    // POST to api here using form values
     const { data, error } = await supabase
       .from("reservations")
       .insert([formValues]);
-    console.log(data);
+    if (error) {
+      toast.error(error.message);
+    } else {
+      toast.success("Reservation successfully added");
+      history.push("/confirmation");
+    }
   };
 
   return (
@@ -226,26 +232,7 @@ export default function CartItem(props) {
               </Form.Control.Feedback>
             </Form.Group>
           </Form.Row>
-
-          <Button
-            variant="primary"
-            type="submit"
-            onClick={(e) => {
-              e.preventDefault();
-              if (
-                formValues.address1.length &&
-                formValues.city.length > 0 &&
-                formValues.zip.length === 5 &&
-                formValues.phone.length === 10
-              ) {
-                toast.success("Reservation successfully added");
-              } else {
-                toast.error("Please complete form");
-              }
-            }}
-          >
-            Confirm Reservation
-          </Button>
+          <Button>Confirm Reservation</Button>
         </Form>
       </Container>
     </div>

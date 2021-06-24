@@ -1,7 +1,10 @@
 import React, { useState } from "react";
-import { Link, Redirect, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { Form, Row, InputGroup, Container } from "react-bootstrap";
-import { Button } from "../components/styled-components/styled-components";
+import {
+  Button,
+  Header,
+} from "../components/styled-components/styled-components";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { supabase } from "../supabaseClient";
@@ -9,7 +12,6 @@ import { useDispatch } from "react-redux";
 import { addUser } from "../actions/cart-actions";
 
 export default function SignUpForm() {
-  const [validated, setValidated] = useState(false);
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
@@ -41,15 +43,10 @@ export default function SignUpForm() {
   };
   return (
     <div>
-      <h1>Register</h1>
+      <Header>Register</Header>
       <Container fluid>
         <div className="signUpContainer">
-          <Form
-            // noValidate
-            // required
-            // validated={validated}
-            onSubmit={handleSubmitData}
-          >
+          <Form onSubmit={handleSubmitData}>
             <Row className="mb-3">
               <Form.Group md="3" controlId="validationCustom01">
                 <Form.Label>First name</Form.Label>
