@@ -7,6 +7,7 @@ import { useHistory } from "react-router-dom";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { addUser } from "../actions/cart-actions";
+import { Header } from "../components/styled-components/styled-components";
 
 export default function Login() {
   const [email, setemail] = useState({});
@@ -37,7 +38,7 @@ export default function Login() {
 
   return (
     <div>
-      <h1>Login</h1>
+      <Header>Login</Header>
       <div className="loginContainer">
         <Form onSubmit={handleLogin}>
           <Form.Group>
