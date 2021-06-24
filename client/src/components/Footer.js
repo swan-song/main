@@ -71,7 +71,7 @@ export default function Footer() {
                   </a>
                 </li>
                 <li className="mb-2">
-                  <a href="#" className="text-muted">
+                  <a href="/about" className="text-muted">
                     About Us
                   </a>
                 </li>

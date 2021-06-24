@@ -12,6 +12,7 @@ import SingleCarPage from "./components/SingleCarPage";
 import { toast } from "react-toastify";
 import Confirmation from "./components/Confirmation";
 import ScrollToTop from "./actions/ScrollToTop";
+import About from "./components/About";
 
 toast.configure();
 
@@ -45,6 +46,9 @@ function App() {
           </Route>
           <Route path="/confirmation">
             <Confirmation />
+          </Route>
+          <Route path="/about">
+            <About />
           </Route>
         </Switch>
       </Router>

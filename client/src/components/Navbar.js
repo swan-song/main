@@ -1,5 +1,5 @@
 import React from "react";
-import { Navbar as RBNavbar, Nav } from "react-bootstrap";
+import { Navbar as RBNavbar, Nav, Form } from "react-bootstrap";
 import { Link, useHistory } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { supabase } from "../supabaseClient";
@@ -70,10 +70,12 @@ export default function Navbar() {
               <Link to="/cart">
                 <Nav.Link href="/cart">Cart</Nav.Link>
               </Link>
+            </Nav>
+          <Form inline>
               <Button signout onClick={signOut}>
                 Sign Out
               </Button>
-            </Nav>
+          </Form>
           </RBNavbar.Collapse>
         </RBNavbar>
       </div>
