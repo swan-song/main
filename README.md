@@ -6,13 +6,9 @@ Exotic Rentals is a luxury car rental service. Whether it is a special occasion,
 
 INSERT_SCREENSHOT
 
-## Motivation
-
-The inspiration for our application came from [LVC Exotic Rentals](https://lvcexotics.com/)
-
 ## Demo
 
-Watch it here
+Watch it [here](https://github.com/swan-song/main/blob/main/README.md)
 
 ## Installation
 
@@ -32,9 +28,13 @@ npm start
 
 ## Mobile Responsiveness
 
-- Computer
+- Desktop
 - Tablet
 - Phone
+
+## Credits
+
+The inspiration for our application came from [LVC Exotic Rentals](https://lvcexotics.com/)
 
 ## Contributors
 
@@ -43,6 +43,6 @@ npm start
 - Carlo Carbonell
 - Frankie Ferbrache
 
-# Further Reading
+## Further Reading
 
-- Medium Article
+- [Exotic Rentals](https://medium.com/)
