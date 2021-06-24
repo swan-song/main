@@ -29,7 +29,7 @@ export default function Navbar() {
       <div>
         <RBNavbar bg="light" expand="lg">
           <Link to="/">
-            <RBNavbar.Brand href="/">Branding</RBNavbar.Brand>
+            <RBNavbar.Brand href="/">Luxury Motor Group</RBNavbar.Brand>
           </Link>
           <RBNavbar.Toggle aria-controls="basic-navbar-nav" />
           <RBNavbar.Collapse id="basic-navbar-nav">
@@ -56,7 +56,7 @@ export default function Navbar() {
       <div>
         <RBNavbar bg="light" expand="lg">
           <Link to="/">
-            <RBNavbar.Brand href="/">Branding</RBNavbar.Brand>
+            <RBNavbar.Brand href="/">Luxury Motor Group</RBNavbar.Brand>
           </Link>
           <RBNavbar.Toggle aria-controls="basic-navbar-nav" />
           <RBNavbar.Collapse id="basic-navbar-nav">
