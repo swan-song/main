@@ -36,13 +36,6 @@ npm start
 
 The inspiration for our application came from [LVC Exotic Rentals](https://lvcexotics.com/)
 
-## Contributors
-
-- Randy Chong
-- Kendall Burdette
-- Carlo Carbonell
-- Frankie Ferbrache
-
 ## Further Reading
 
 - [Exotic Rentals](https://medium.com/)
