@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import CarCard from "./CarCard";
 import { useSelector, useDispatch } from "react-redux";
 import { getCars } from "../actions/car-actions";
-import { Header } from "./styled-components/styled-components";
+import { Header, Container } from "./styled-components/styled-components";
 
 export default function Garage() {
   const dispatch = useDispatch();
@@ -16,7 +16,11 @@ export default function Garage() {
   return (
     <div>
       <Header>Garage</Header>
-      {cars ? cars.map((car) => <CarCard car={car} key={car.id} />) : "loading"}
+      <Container garage>
+        {cars
+          ? cars.map((car) => <CarCard car={car} key={car.id} />)
+          : "loading"}
+      </Container>
     </div>
   );
 }
