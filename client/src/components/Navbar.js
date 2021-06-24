@@ -20,7 +20,7 @@ export default function Navbar() {
         position: toast.POSITION.TOP_CENTER,
       });
     } else {
-      history.push("/account")
+      history.push("/account");
     }
     refreshPage();
   };
@@ -70,7 +70,9 @@ export default function Navbar() {
               <Link to="/cart">
                 <Nav.Link href="/cart">Cart</Nav.Link>
               </Link>
-              <Button onClick={signOut}>Sign Out</Button>
+              <Button signout onClick={signOut}>
+                Sign Out
+              </Button>
             </Nav>
           </RBNavbar.Collapse>
         </RBNavbar>
