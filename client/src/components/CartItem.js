@@ -99,25 +99,25 @@ export default function CartItem(props) {
     event.preventDefault();
     const form = event.currentTarget;
 
-    let hasErrors = !form.checkValidity();
+    // let hasErrors = !form.checkValidity();
 
-    if (hasErrors === false) {
-      const formErrorsValues = Object.values(formErrors);
-      formErrorsValues.forEach((formErrorsValue) => {
-        if (formErrorsValue !== null) {
-          hasErrors = true;
-        }
-      });
-    }
+    // if (hasErrors === false) {
+    //   const formErrorsValues = Object.values(formErrors);
+    //   formErrorsValues.forEach((formErrorsValue) => {
+    //     if (formErrorsValue !== null) {
+    //       hasErrors = true;
+    //     }
+    //   });
+    // }
 
-    setValidated(!hasErrors);
+    // setValidated(!hasErrors);
 
-    if (hasErrors) {
-      event.preventDefault();
-      event.stopPropagation();
+    // if (hasErrors) {
+    //   event.preventDefault();
+    //   event.stopPropagation();
 
-      return;
-    }
+    //   return;
+    // }
 
     const { data, error } = await supabase
       .from("reservations")
