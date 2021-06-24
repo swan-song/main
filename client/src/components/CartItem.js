@@ -17,12 +17,12 @@ import { useHistory } from "react-router";
 
 export default function CartItem(props) {
   const dispatch = useDispatch();
-  const carName = useSelector((state) => state.Cart.cars[0].title)
+  const carName = useSelector((state) => state.Cart.cars[0].title);
   const hours = useSelector((state) => state.Cart.hours);
   const date = useSelector((state) => state.Cart.date);
   const history = useHistory();
-  const userEmail = useSelector((state) => state.Cart.users)
-  const total = props.car.rate * hours
+  const userEmail = useSelector((state) => state.Cart.users);
+  const total = props.car.rate * hours;
 
   // console.log(carName)
   const [formValues, setFormValues] = useState({
@@ -95,34 +95,33 @@ export default function CartItem(props) {
   const [validated, setValidated] = useState(false);
 
   const handleSubmit = async (event) => {
-    const form = event.currentTarget;
+    // const form = event.currentTarget;
 
-    let hasErrors = !form.checkValidity();
+    // let hasErrors = !form.checkValidity();
 
-    if (hasErrors === false) {
-      const formErrorsValues = Object.values(formErrors);
-      formErrorsValues.forEach((formErrorsValue) => {
-        if (formErrorsValue !== null) {
-          hasErrors = true;
-        }
-      });
-    }
+    // if (hasErrors === false) {
+    //   const formErrorsValues = Object.values(formErrors);
+    //   formErrorsValues.forEach((formErrorsValue) => {
+    //     if (formErrorsValue !== null) {
+    //       hasErrors = true;
+    //     }
+    //   });
+    // }
 
-    setValidated(!hasErrors);
+    // setValidated(!hasErrors);
 
-    if (hasErrors) {
-      event.preventDefault();
-      event.stopPropagation();
+    // if (hasErrors) {
+    //   event.preventDefault();
+    //   event.stopPropagation();
 
-      return;
-    }
+    //   return;
+    // }
 
     // POST to api here using form values
     const { data, error } = await supabase
-      .from('reservations')
-      .insert([
-        formValues
-      ])
+      .from("reservations")
+      .insert([formValues]);
+    console.log(data);
   };
 
   return (
