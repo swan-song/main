@@ -76,7 +76,7 @@ export default function Footer() {
                   </a>
                 </li>
                 <li className="mb-2">
-                  <a href="https://github.com/swan-song" className="text-muted">
+                  <a href="https://github.com/swan-song" className="text-muted" target="_blank" rel="noopener noreferrer">
                     Contributors
                   </a>
                 </li>
@@ -87,7 +87,7 @@ export default function Footer() {
                 Medium Article
               </h6>
               <p className="text-muted mb-4">
-                Follow this link to check out the Medium article that we all
+                Follow this <a href="https://medium.com" target="_blank" rel="noopener noreferrer">link</a> to check out the Medium article that we all
                 collectively contributed to!
               </p>
             </div>
