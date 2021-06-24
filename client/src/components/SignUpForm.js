@@ -23,23 +23,27 @@ export default function SignUpForm() {
   const handleSubmitData = async (event) => {
     event.preventDefault();
     const first_name = firstName;
-    const last_name = lastName;
 
-    const { user, session, error } = await supabase.auth.signUp({
-      email: email,
-      password: password,
-    });
-    if (error) {
-      toast.error(error.message, {
-        position: toast.POSITION.TOP_CENTER,
+    if (password !== passwordTwo) {
+      toast.error("Passwords must match")
+    } else{
+      const { user, session, error } = await supabase.auth.signUp({
+        email: email,
+        password: password,
       });
-    } else {
-      addUser(dispatch, user.email);
-      toast.success(`Welcome ${first_name}!`, {
-        position: toast.POSITION.TOP_CENTER,
-      });
-      history.push("/");
+      if (error) {
+        toast.error(error.message, {
+          position: toast.POSITION.TOP_CENTER,
+        });
+      } else {
+        addUser(dispatch, user.email);
+        toast.success(`Welcome ${first_name}!`, {
+          position: toast.POSITION.TOP_CENTER,
+        });
+        history.push("/");
+      }
     }
+
   };
   return (
     <div>
@@ -105,7 +109,9 @@ export default function SignUpForm() {
               <Form.Group md="3" controlId="validationCustom03">
                 <Form.Label>Re-Enter Password</Form.Label>
                 <Form.Control
+                  name="confirm_password"
                   type="password"
+                  onChange={(e) => setPasswordTwo(e.target.value)}
                   placeholder="Re-Enter Password"
                   required
                 />
