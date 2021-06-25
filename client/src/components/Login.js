@@ -13,7 +13,6 @@ export default function Login() {
   const [email, setemail] = useState({});
   const [password, setpassword] = useState({});
   const dispatch = useDispatch();
-  const [loading, setLoading] = useState(false);
   const history = useHistory();
 
   const handleLogin = async (e) => {
