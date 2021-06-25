@@ -47,6 +47,7 @@ export const Image = styled.img`
 
 export const Header = styled.h1`
   font-weight: bold;
+  margin-top: 1rem;
 
   color: ${(props) => (props.light ? "white" : "")};
   text-shadow: ${(props) => (props.light ? "black 1px 0 10px" : "")};
@@ -278,4 +279,6 @@ export const Container = styled.div`
   background: ${(props) =>
     props.error ? "url(https://bit.ly/3h0vX8W) center" : ""};
   background-size: ${(props) => (props.error ? "cover" : "")};
+
+  margin-top: ${(props) => (props.footer ? "6rem" : "")};
 `;
