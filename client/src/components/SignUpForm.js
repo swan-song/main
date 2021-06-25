@@ -25,8 +25,8 @@ export default function SignUpForm() {
     const first_name = firstName;
 
     if (password !== passwordTwo) {
-      toast.error("Passwords must match")
-    } else{
+      toast.error("Passwords must match");
+    } else {
       const { user, session, error } = await supabase.auth.signUp({
         email: email,
         password: password,
@@ -43,7 +43,6 @@ export default function SignUpForm() {
         history.push("/");
       }
     }
-
   };
   return (
     <div>
@@ -59,7 +58,6 @@ export default function SignUpForm() {
                   name="first_name"
                   type="text"
                   onChange={(e) => setFirstName(e.target.value)}
-                  placeholder="First name"
                 />
                 <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
               </Form.Group>
@@ -70,7 +68,6 @@ export default function SignUpForm() {
                   name="last_name"
                   type="text"
                   onChange={(e) => setLastName(e.target.value)}
-                  placeholder="Last name"
                 />
                 <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
               </Form.Group>
@@ -81,7 +78,6 @@ export default function SignUpForm() {
                     name="email"
                     type="email"
                     onChange={(e) => setEmail(e.target.value)}
-                    placeholder="Email"
                     aria-describedby="inputGroupPrepend"
                     required
                   />
@@ -99,7 +95,6 @@ export default function SignUpForm() {
                   name="password"
                   type="password"
                   onChange={(e) => setPassword(e.target.value)}
-                  placeholder="Password"
                   required
                 />
                 <Form.Control.Feedback type="invalid">
@@ -112,7 +107,6 @@ export default function SignUpForm() {
                   name="confirm_password"
                   type="password"
                   onChange={(e) => setPasswordTwo(e.target.value)}
-                  placeholder="Re-Enter Password"
                   required
                 />
                 <Form.Control.Feedback type="invalid">
