@@ -51,7 +51,7 @@
 }
 
 @media screen and (max-width: 992px) {
-  .about{
+  .about {
   display: grid;
   flex-wrap: wrap;
   grid-template-columns: repeat(1, 1fr);
@@ -63,15 +63,14 @@
   }
 }
 
-/* @media screen and (max-width: 600px) {
-  .about{
-  display: grid;
-  flex-wrap: wrap;
-  grid-template-columns: repeat(1, 1fr);
-  align-items: top;
-  justify-content: center;
-  margin: 2rem;
-  text-align: center;
-  padding: 25px 50px 5px;
+@media screen and (max-width: 992px) {
+  .contact-info {
+  text-align: center;  
   }
-} */
+}
+@media screen and (max-width: 992px) {
+  .map {
+  margin-left: auto;
+  margin-right: auto;
+  }
+}
