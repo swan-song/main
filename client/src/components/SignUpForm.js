@@ -66,7 +66,6 @@ export default function SignUpForm() {
                   required
                   name="last_name"
                   type="text"
-                  onChange={(e) => setLastName(e.target.value)}
                 />
                 <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
               </Form.Group>
