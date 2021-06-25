@@ -280,5 +280,5 @@ export const Container = styled.div`
     props.error ? "url(https://bit.ly/3h0vX8W) center" : ""};
   background-size: ${(props) => (props.error ? "cover" : "")};
 
-  margin-top: ${(props) => (props.footer ? "6rem" : "")};
+  margin-top: ${(props) => (props.footer ? "7rem" : "")};
 `;
