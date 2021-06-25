@@ -62,7 +62,7 @@ export default function Footer() {
               <p className="text-muted mb-4">
                 Follow this{" "}
                 <a
-                  href="https://medium.com"
+                  href="https://carlo1678.medium.com/8501dd1815c0"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
