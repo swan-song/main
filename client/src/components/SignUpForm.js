@@ -13,7 +13,6 @@ import { addUser } from "../actions/cart-actions";
 
 export default function SignUpForm() {
   const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [passwordTwo, setPasswordTwo] = useState("");
@@ -69,7 +68,6 @@ export default function SignUpForm() {
                   required
                   name="last_name"
                   type="text"
-                  onChange={(e) => setLastName(e.target.value)}
                   placeholder="Last name"
                 />
                 <Form.Control.Feedback>Looks good!</Form.Control.Feedback>

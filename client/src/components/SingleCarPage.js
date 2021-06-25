@@ -60,7 +60,7 @@ export default function SingleCarPage() {
         [key]: value,
       };
     });
-  }, []);
+  });
 
   const [validated, setValidated] = useState(false);
 
