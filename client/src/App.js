@@ -13,6 +13,8 @@ import { toast } from "react-toastify";
 import Confirmation from "./components/Confirmation";
 import ScrollToTop from "./actions/ScrollToTop";
 import About from "./components/About";
+import Error from "./components/Error";
+import { Container } from "./components/styled-components/styled-components";
 
 toast.configure();
 
@@ -50,9 +52,14 @@ function App() {
           <Route path="/about">
             <About />
           </Route>
+          <Route path="*">
+            <Error />
+          </Route>
         </Switch>
       </Router>
-      <Footer />
+      <Container footer>
+        <Footer />
+      </Container>
     </div>
   );
 }

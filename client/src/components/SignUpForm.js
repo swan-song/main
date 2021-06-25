@@ -62,11 +62,7 @@ export default function SignUpForm() {
               </Form.Group>
               <Form.Group md="3" controlId="validationCustom02">
                 <Form.Label>Last name</Form.Label>
-                <Form.Control
-                  required
-                  name="last_name"
-                  type="text"
-                />
+                <Form.Control required name="last_name" type="text" />
                 <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
               </Form.Group>
               <Form.Group md="3" controlId="validationCustomUsername">
