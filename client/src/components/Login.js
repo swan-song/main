@@ -46,7 +46,6 @@ export default function Login() {
             <Form.Control
               required
               type="text"
-              placeholder="Email"
               defaultValue=""
               onChange={(e) => setemail(e.target.value)}
             />
@@ -54,7 +53,6 @@ export default function Login() {
             <Form.Control
               required
               type="password"
-              placeholder="Password"
               defaultValue=""
               onChange={(e) => setpassword(e.target.value)}
             />
