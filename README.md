@@ -1,10 +1,11 @@
 # Luxury Motor Group (LMG) Rentals
 
+## Link
 - [LMG Rentals](https://lmg-rentals.netlify.app/)
 
 Luxury Motor Group (LMG) Rentals is a luxury car rental service. Whether it is a special occasion, corporate event, or you're simply looking to drive your dream car we can make it happen. Our packages features unlimited mileage, competitive pricing, and local delivery. Make your reservation today!
 
-INSERT_SCREENSHOT
+![image](https://user-images.githubusercontent.com/80011655/123467476-8f52c180-d5be-11eb-8bc0-5e55fb1ab658.png)
 
 ## Demo
 
