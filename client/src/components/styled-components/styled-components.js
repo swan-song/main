@@ -11,6 +11,12 @@ export const Button = styled.button`
   color: ${(props) => (props.light ? "white" : "black")};
   background: ${(props) =>
     props.light ? "rgba(0, 0, 0, 0.5)" : "rgba(248, 248, 248, 0.5)"};
+  transition: 200ms ease;
+
+  &:hover {
+    color: ${(props) => (props.light ? "black" : "white")};
+    background: ${(props) => (props.light ? "white" : "black")};
+  }
 
   @media (min-width: 992px) {
     height: ${(props) => (props.light ? "4rem" : "")};
@@ -49,7 +55,62 @@ export const Header = styled.h1`
   text-shadow: ${(props) => (props.dark ? "white 1px 0 10px" : "")};
 `;
 
-export const SubHeader = styled.h2``;
+export const SubHeader = styled.h2`
+  margin-left: auto;
+  margin-right: auto;
+
+  font-weight: ${(props) => (props.light ? "bold" : "")};
+  color: ${(props) => (props.light ? "white" : "")};
+  text-shadow: ${(props) => (props.light ? "black 1px 0 10px" : "")};
+  background: ${(props) => (props.light ? "rgba(0, 0, 0, 0.5)" : "")};
+
+  @media (min-width: 600px) {
+    width: ${(props) => (props.light ? "30rem" : "")};
+  }
+
+  @media (min-width: 800px) {
+    width: ${(props) => (props.light ? "35rem" : "")};
+    background: ${(props) => (props.light ? "none" : "")};
+  }
+
+  @media (min-width: 1000px) {
+    width: ${(props) => (props.light ? "40rem" : "")};
+  }
+
+  @media (min-width: 1200px) {
+    width: ${(props) => (props.light ? "75%" : "")};
+  }
+
+  @media (min-width: 1500px) {
+    padding-top: ${(props) => (props.light ? "3rem" : "")};
+  }
+
+  font-weight: ${(props) => (props.dark ? "bold" : "")};
+  color: ${(props) => (props.dark ? "black" : "")};
+  text-shadow: ${(props) => (props.dark ? "white 1px 0 10px" : "")};
+  background: ${(props) => (props.dark ? "rgba(248, 248, 248, 0.6)" : "")};
+
+  @media (min-width: 600px) {
+    width: ${(props) => (props.dark ? "30rem" : "")};
+  }
+
+  @media (min-width: 800px) {
+    width: ${(props) => (props.dark ? "35rem" : "")};
+    background: ${(props) => (props.dark ? "none" : "")};
+  }
+
+  @media (min-width: 1000) {
+    width: ${(props) => (props.dark ? "40rem" : "")};
+  }
+
+  @media (min-width: 1200px) {
+    width: ${(props) => (props.dark ? "75%" : "")};
+  }
+
+  @media (min-width: 1500px) {
+    padding-top: ${(props) => (props.dark ? "3rem" : "")};
+  }
+`;
 
 export const Info = styled.p`
   margin-left: auto;
@@ -58,6 +119,7 @@ export const Info = styled.p`
 
   color: ${(props) => (props.light ? "white" : "")};
   font-weight: ${(props) => (props.light ? "bold" : "")};
+  font-size: ${(props) => (props.light ? "20px" : "")};
   text-shadow: ${(props) => (props.light ? "black 1px 0 10px" : "")};
   background: ${(props) => (props.light ? "rgba(0, 0, 0, 0.5)" : "")};
 
@@ -77,6 +139,7 @@ export const Info = styled.p`
 
   color: ${(props) => (props.dark ? "black" : "")};
   font-weight: ${(props) => (props.dark ? "bold" : "")};
+  font-size: ${(props) => (props.dark ? "20px" : "")};
   text-shadow: ${(props) => (props.dark ? "white 1px 0 10px" : "")};
   background: ${(props) => (props.dark ? "rgba(248, 248, 248, 0.6)" : "")};
 

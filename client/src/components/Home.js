@@ -4,6 +4,7 @@ import {
   Info,
   Button,
   Container,
+  SubHeader,
 } from "./styled-components/styled-components";
 import { Link } from "react-router-dom";
 
@@ -22,34 +23,29 @@ export default function Home() {
       <Container home>
         <Container banner bannerTwo>
           <Header light>UNLIMITED MILES</Header>
-          <Info light>
-            We don't have a mile cap on our rentals! Pay by the hour, and take
-            the car as far as you'd like! Just make sure you bring it back of
-            course.
-          </Info>
+          <SubHeader light>
+            We don't have a mile cap on our rentals so you can take the car as
+            far as you'd like!
+          </SubHeader>
         </Container>
       </Container>
 
       <Container home>
         <Container banner bannerThree>
           <Header dark>BEST PRICE</Header>
-          <Info dark>
-            We've got some of the most competitive prices in this small, but
-            fair market. Compare our prices to all the competitors, and we can
-            guarantee you won't go anywhere else for your luxury rentals!
-          </Info>
+          <SubHeader dark>
+            We've got some of the most competitive prices, and we'll beat or
+            match any price in town!
+          </SubHeader>
         </Container>
       </Container>
 
       <Container home>
         <Container banner bannerFour>
           <Header light>LOCAL DELIVERY</Header>
-          <Info light>
-            Once you complete the rental process, we will deliver your car to
-            the location of your choice. Just please, don't send us into the
-            middle of a field where you plan on doing something drastic. We've
-            got protection for that 😁.
-          </Info>
+          <SubHeader light>
+            We'll deliver your car directly to you wherever you are!
+          </SubHeader>
         </Container>
       </Container>
 
