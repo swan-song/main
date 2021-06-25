@@ -274,4 +274,8 @@ export const Container = styled.div`
   background: ${(props) =>
     props.bannerFive ? "url(https://cnn.it/3vPkVbY) center" : ""};
   background-size: ${(props) => (props.bannerFive ? "cover" : "")};
+
+  background: ${(props) =>
+    props.error ? "url(https://bit.ly/3h0vX8W) center" : ""};
+  background-size: ${(props) => (props.error ? "cover" : "")};
 `;
