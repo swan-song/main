@@ -32,4 +32,4 @@ The inspiration for our application came from [LVC Exotic Rentals](https://lvcex
 
 ## Medium Article
 
-- [LMG Rentals](https://medium.com/)
+- [LMG Rentals](https://carlo1678.medium.com/capstone-project-8501dd1815c0)
