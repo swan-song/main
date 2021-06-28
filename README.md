@@ -8,8 +8,8 @@ Luxury Motor Group (LMG) Rentals is a luxury car rental service. Whether it is a
 ![image](https://user-images.githubusercontent.com/80011655/123467476-8f52c180-d5be-11eb-8bc0-5e55fb1ab658.png)
 
 ## Demo
+[![Alt text](https://img.youtube.com/vi/A8Z0aYI1WMM/0.jpg)](https://www.youtube.com/watch?v=A8Z0aYI1WMM)
 
-Watch it [here](https://www.youtube.com/watch?v=A8Z0aYI1WMM)
 
 ## Installation
 
